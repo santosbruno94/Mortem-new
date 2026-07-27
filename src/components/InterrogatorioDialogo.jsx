@@ -107,15 +107,25 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // Reações de confronto NÃO entram no termo: são canal lateral transitório
   // por desenho, e o botão que as produz continua à mão (reapresentar a prova
   // devolve a mesma cena). O que entra é a fala dos beats — e é só nela que
-  // vivem os 49 marcadores [[id]] do caso.
+  // vivem os 49 marcadores [[id]] das árvores.
+  //
+  // A `alfinetada` e o `degrau` também ficam de fora, e por razão mais dura
+  // (fiscal-continuidade, 27/07/2026): os dois são função da MESA NO INSTANTE
+  // DO RENDER — a alfinetada pelo nível de exposição, o degrau pela contagem
+  // da lista curada. Reimprimi-los num beat passado mostraria o que diriam
+  // AGORA, não o que disseram então: seria inventar um passado que o jogador
+  // não viveu. Nenhuma carta se perde por isso (zero [[id]] em `alfinetada` e
+  // `degraus`, no caso-escola e nos 31 casos gerados). O rodapé promete «o
+  // que ele DECLAROU fica escrito», que é exatamente o que persiste.
   const trilha = [dialogo.noInicial, ...(nosVisitadosDialogo[suspeitoId] || [])];
   // Em reação, o beat corrente também já é passado: quem ocupa a tela é a
   // cena da prova. Fora dela, o último da trilha É a tela — e não se repete.
   const registro = emReacao ? trilha : trilha.slice(0, -1);
   // A pergunta que levou a cada resposta, reconstruída da árvore: a opção do
-  // nó anterior que aponta para este. O rótulo variável (`rotuloVars`) usa a
-  // MESMA chave determinística da renderização, para o termo repetir palavra
-  // por palavra a pergunta que o perito de fato fez.
+  // nó anterior que aponta para este. O índice indexa `opcoes` INTEIRO, e a
+  // renderização passou a fazer o mesmo (`indexOf` sobre `no.opcoes`) — é o
+  // que garante que o termo repita palavra por palavra a pergunta que o perito
+  // fez, e não a redação de outro tom.
   const perguntaQueLevouA = (indice) => {
     if (indice <= 0) return null;
     const anterior = dialogo.nos[trilha[indice - 1]];
@@ -324,8 +334,20 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       {/* As escolhas do perito: as quatro falas do beat (tons) OU, na reação,
           o retomar da conversa. */}
       <div className="mt-6 space-y-2" data-opcoes-dialogo>
-        {opcoesVisiveis.map((op, i) => {
+        {opcoesVisiveis.map((op) => {
           const ehConfronto = !!op.requerCarta;
+          // A chave determinística indexa a lista COMPLETA, nunca a filtrada
+          // (fiscal-continuidade, 27/07/2026). Duas razões, e a segunda é a
+          // grave: (a) o registro da conversa reconstrói o índice por
+          // `findIndex` sobre `no.opcoes` inteiro, e se algum dia uma opção
+          // trouxer `requerCarta` os dois lados divergem — a pergunta escrita
+          // no termo passa a ser a redação de outro tom; (b) `opcoesVisiveis`
+          // é filtrada por `temCarta`, que muda DURANTE a partida, e indexar
+          // por ela faria a redação do beat corrente mudar sozinha quando o
+          // jogador colhesse uma carta. A variação é da IDENTIDADE DO PERITO,
+          // e de mais nada. Hoje byte-idêntico (nenhuma opção usa
+          // `requerCarta`, no caso-escola e nas 155 árvores dos gerados).
+          const i = (no.opcoes || []).indexOf(op);
           // Variação da PERGUNTA (caso-escola): quando a opção traz um pool
           // `rotuloVars`, a redação varia pela IDENTIDADE DO PERITO (o único
           // eixo determinístico do tutorial — seed fixa) — cada persona ouve
@@ -467,9 +489,9 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
           é o que traz a contagem; sai a duplicata (e com ela o travessão da
           fórmula «não X — mas Y»). Pipeline `revisar-prosa` de 27/07/2026. */}
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">
-        A conversa desce e não volta: cada pergunta escolhida descarta as outras, mas o que ele já
-        disse fica escrito. Confrontar com uma prova só se abre quando ela está na mesa, e não gasta
-        a vez. Interrogar não custa tempo; o relógio só corre quando você viaja.
+        A conversa desce e não volta: cada pergunta escolhida descarta as outras, mas o que ele
+        declarou fica escrito. Confrontar com uma prova só se abre quando ela está na mesa, e não
+        gasta a vez. Interrogar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </Overlay>
   );

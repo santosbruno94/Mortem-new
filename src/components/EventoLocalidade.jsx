@@ -137,7 +137,13 @@ export default function EventoLocalidade({ localidadeId }) {
     .filter(eventoPermite)
     .flatMap((bloco) => bloco.paragrafos);
 
-  const paragrafosContingentes = (localidade.blocosContingentes || [])
+  // Mesma regra do irmão acima, e pela mesma razão (fiscal-continuidade,
+  // 27/07/2026): a prosa contingente é de quem tem a prosa. Hoje inócuo — só
+  // `posto_do_guarda` e `cela` declaram `blocosContingentes`, e nenhum dos dois
+  // tem sub-locais —, mas o gerador pode dividir um prédio com interferência
+  // dentro, e aí o cômodo precisa da sua. A reserva pela localidade fica: nada
+  // do que hoje funciona deixa de funcionar.
+  const paragrafosContingentes = (fonte.blocosContingentes || localidade.blocosContingentes || [])
     .filter((bloco) =>
       bloco.quando === 'disparado'
         ? eventosDisparados.has(bloco.eventoId)

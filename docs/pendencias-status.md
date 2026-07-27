@@ -352,6 +352,20 @@ em Silas, `ev_cesta_rooke`, `ev_registro_estalagem`, `ev_suplica_cesto`,
 `prova_apresentada` sem carta fixa — sobram 4 confrontos livres em Silas e 2 em Herrick
 mesmo com a mesa sem álibi nenhum.
 
+### O que o pipeline `revisar-prosa` achou e ficou por fazer
+
+As três passadas correram sobre a prosa nova (parecer resumido nas mensagens de commit
+`8692e62` e no fecho desta rodada). Consertou-se tudo o que era bloqueante e alto. Estes
+cinco ficaram, e cada um por um motivo:
+
+| # | Achado | Por que ficou |
+|---|---|---|
+| P-1 | **Os outros dois gestos do corpo têm o defeito do item 4.** O conserto deu estado ao gesto do livor; o relógio de bolso e o termômetro continuam sem. A prosa-base diz «pende um relógio de bolso de tampa fechada, mudo» e «o termômetro fica à mão, se … julgar oportuno medir» — e as duas frases ficam falsas depois de dar corda e de medir, que é exatamente o defeito que o item 4 denunciou. A máquina já existe (`semCartas`/`requerCartas`) e o conserto é de dados | **Precisa de ordem expressa** — é estender uma feature a dois gestos que o playtest não citou |
+| P-2 | **A cela desenha-se como gabinete.** `tipoCenaDe('cela', 'posto')` cai no default `'gabinete'` (estante de livros-razão + escrivaninha), contra a prosa: «um cubículo de porta gradeada: enxerga, balde, e uma tábua de tarimba». Pré-existente — com `grupo: 'vila'` caía no mesmo default —, mas o grupo `posto` novo torna a correção de uma linha possível (`if (grupo === 'posto') return 'delegacia';`) | Pré-existente e **fora do escopo do playtest**; camada de apresentação, nenhuma regra a lê. Fica à sua ordem |
+| P-3 | **`carimboPadrao` de `ev_rigor` × faixa do glossário.** O carimbo que viaja para o mural diz «extremidades começando a ceder», e o verbete mapeia essa formulação à faixa de **24–36 h**, enquanto a carta está na de **12–24 h**. Um jogador metódico que cruze os dois desloca o corpo uma faixa inteira. Não quebra a solubilidade (as âncoras duráveis de 20 h/23 h resolvem sozinhas) | **Divergência KB × motor: decisão sua, não do agente** (regra do `CLAUDE.md`). É a que eu levaria a sério primeiro |
+| P-4 | **Duas derivas da KB em relação ao código.** O exemplo trabalhado de algor em `tanatologia.md` §1 usa morte às 22 h e IPM 13 h, contra as 21 h e IPM 16 h do `seed.js`; e a KB atribui o teto de 23 h da janela durável ao livor fixo, quando hoje ele vem da rotina interrompida do relógio de bolso (`horaRotina: -1`) | Idem — **decisão sua**. Nenhuma foi introduzida nesta rodada |
+| P-5 | **O relatório de 27/07 diz «Walter terminou com 5 provas contra si (mais que o culpado!)».** Verdadeiro da mesa daquele jogador (34 de 51); falso do catálogo, onde 5 apontam Walter e **7** apontam Silas | O relatório é versionado **verbatim** e não se corrige. Fica a ressalva aqui, para o número não fundar decisão de paridade de iscas |
+
 ---
 
 ## Verificação das pendências da OS-S1 (27/07/2026)

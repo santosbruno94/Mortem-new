@@ -139,8 +139,8 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
   // e só isso; qualquer outro valor — `sem_juizo` inclusive — empurra
   // `falhas.push({ codigo: 'periferico' })` e derruba a Vitória Absoluta. Pior:
   // o monólogo já tem prosa para a inocência dada SEM paradeiro colhido
-  // (`PERIFERICO_ALIBI_CONVICCAO`) e trata-a como acerto com repreensão — «a
-  // convicção acertou; não é método que eu assine duas vezes». Logo a regra
+  // (`PERIFERICO_ALIBI_CONVICCAO`) e trata-a como acerto com repreensão — «dei-lhe
+  // a inocência por convicção, não por perícia, e a convicção acertou». Logo a regra
   // verdadeira é: juízo lavrado em todos, sempre; o paradeiro na mesa é o que
   // separa perícia de convicção; e o laço vestígio→álibi é o que se exige de
   // quem mentiu por segredo. Um painel que existe para ensinar o critério não

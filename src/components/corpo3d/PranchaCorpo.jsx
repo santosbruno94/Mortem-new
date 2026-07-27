@@ -91,12 +91,18 @@ export default function PranchaCorpo({ ipm }) {
   // voltou o corpo, e o atlas mostra o lado que ele acabou de descobrir.
   // Só na TRANSIÇÃO — reabrir o exame com o livor já colhido não força a face,
   // e virar a folha de volta continua sendo do jogador.
+  //
+  // E só com o EXAME EXTERNO em tela (fiscal-continuidade, 27/07/2026): a
+  // necropsia desenha a sua própria vista, e a viragem corria por baixo dela
+  // — o jogador voltava do corte e achava a folha trocada sem ter visto nada
+  // virar. O gesto tem de ser visível para ser gesto; com a necropsia aberta,
+  // a face fica como estava e o botão de virar continua onde sempre esteve.
   const tinhaLivores = useRef(cartasRegistradas.some((c) => c.id === 'ev_livores'));
   const temLivores = cartasRegistradas.some((c) => c.id === 'ev_livores');
   useEffect(() => {
-    if (temLivores && !tinhaLivores.current) setFace('dorso');
+    if (temLivores && !tinhaLivores.current && camada === 'externo') setFace('dorso');
     tinhaLivores.current = temLivores;
-  }, [temLivores]);
+  }, [temLivores, camada]);
 
   const aparencia = obterAparencia('vitima');
   const f = aparencia.corpo === 'sobrepeso' ? 1.22 : aparencia.corpo === 'magro' ? 0.86 : 1;
