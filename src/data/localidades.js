@@ -218,7 +218,7 @@ export const LOCALIDADES = [
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]] e, presas a ele por um alfinete, [[dep_dividas_walter]].',
       'No livro de ocorrências, com a tinta de ontem, uma [[dep_queixa_grey]]; na página de sábado, os [[dep_briga_walter]] que um carroceiro veio contar por conta própria.',
       'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin. "Tobin faz a ronda de Caulfield e desce a nossa rua às oito, que é onde as duas se encontram… isto é, onde a dele acaba e a minha ainda não começou. Passa e segue. O que vê pelo caminho lavra no livro dele e copia no meu, e eu faço o mesmo com o que vejo do meu."',
-      'Wycliffe guarda para o fim os relatos da manhã. Da claridade vista antes de clarear, a [[dep_avistamento_padeiro]]: "se havia luz àquela hora, havia homem aceso dentro dela, digo eu." E o palpite vem sem que se peça: "A luz das cinco arruma-me o caso. Ladrão de madrugada, relógio parado nas quase nove, caixa vazada. O palpite é meu; a perícia, essa, é {g:do senhor|da senhora}."',
+      'Wycliffe guarda para o fim os relatos da manhã. Da luz vista antes de clarear, a [[dep_avistamento_padeiro]]: "se havia luz àquela hora, havia homem aceso dentro dela, digo eu." E o palpite vem sem que se peça: "A luz das cinco arruma-me o caso. Ladrão de madrugada, relógio parado nas quase nove, caixa vazada. O palpite é meu; a perícia, essa, é {g:do senhor|da senhora}."',
     ],
     // OS-S1 · INTERFERÊNCIA `coacao_wick`. O relato da viela é o único papel
     // do posto que muda de forma durante o inquérito: quem chega a tempo
@@ -267,7 +267,7 @@ export const LOCALIDADES = [
     acoesEspeciais: [],
     prosa: [
       'Um corredor de tijolo atrás da sala da frente, e ao fim dele um cubículo de porta gradeada: enxerga, balde, e uma tábua de tarimba fixa à parede. A janela alta é um postigo de duas grades cruzadas, à altura de um homem em pé. Cheira a cal e a palha molhada.',
-      'Nathan Herrick está sentado na tábua, o casaco de estrada dobrado sobre os joelhos, as botas cobertas de argila seca até o cano. Levanta-se ao ouvir a chave e fica de pé junto à grade, sem se encostar nela. "Que horas são, senhor?"',
+      'Nathan Herrick está sentado na tábua, o casaco de estrada dobrado sobre os joelhos. As botas, por lavar, ficaram ao pé da enxerga.',
     ],
     // OS-S1 · INTERFERÊNCIA `silenciar_herrick` (PD-11, §7.4 da proposta). A
     // cela é AUTO DE EXAME, não segundo mural: duas cartas, e o veredicto
@@ -278,7 +278,7 @@ export const LOCALIDADES = [
         quando: 'disparado',
         paragrafos: [
           'A porta gradeada está aberta e o corredor tem mais gente do que da outra vez. Wycliffe fica de fora, à entrada, e não pergunta nada. O que houver a examinar examina-o quem veio para isso, e o termo lavra-se ali mesmo, sobre o joelho: [[dep_achado_cela]].',
-          'A tira do casaco continua atada à grade do postigo, cortada de um lado. Na aresta da tábua da tarimba, do lado que dá para a porta, [[ev_cera_tarimba]].',
+          'A tira de fazenda continua atada à grade do postigo, cortada de um lado. Na aresta da tábua da tarimba, do lado que dá para a porta, [[ev_cera_tarimba]].',
         ],
       },
     ],
@@ -370,7 +370,7 @@ export const LOCALIDADES = [
       // A D4 estava fixada nos documentos normativos e nunca fora dita a
       // ninguém: o sobrinho herda menos do que a vila supõe, e o herdeiro
       // barulhento do caso é herdeiro de menos do que ele próprio anuncia.
-      'Perguntado do que há de sobrar, alinha os dedos sobre a pasta. "A casa e as economias, sim. A loja da High Street veio do dote da primeira mulher, e o contrato de então manda-a de volta à família dela na falta de filhos. Não há filhos." Deixa a frase assentar. "O sobrinho herda o que o senhor Arthurs juntou; a loja, essa, nunca foi dele para dar."',
+      'Perguntado do que há de sobrar, alinha os dedos sobre a pasta. "A casa e as economias, sim. A loja da High Street veio do dote da primeira mulher, e o contrato de então manda-a de volta à família dela na falta de filhos. Não há filhos." Torna a alinhar os dedos. "O sobrinho herda o que o Sr. Arthurs juntou. A loja não estava entre o que ele podia dar."',
     ],
   },
 ];

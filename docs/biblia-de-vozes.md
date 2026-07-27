@@ -217,6 +217,37 @@
 - **Amostra:** *"O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não
   perguntou mais nada, e não escreveu."*
 
+## Nathan Herrick (o bode expiatório — o homem da estrada)
+
+- **Quem é:** recoveiro em terceira geração, 41 anos. As sacas do moleiro, os embrulhos do
+  correio e as caixas da relojoaria, entregues à porta dos fundos. Devia £3 ao morto desde
+  março; em setembro o penhor levou-lhe o relógio de prata do pai. Está preso na cela dos
+  fundos do posto desde o sábado à tarde, por ser o forasteiro que o inquérito tinha à mão.
+- **A função mecânica é a mentira MORAL, não a física.** Mente sobre a estrada porque a
+  verdade o põe dentro da sala com o morto no chão — e o que ele lá fez foi recolher o que
+  era dele. O rastro que o desmente é o mesmo que o inocenta. A prosa nunca o endossa nem o
+  desmente; a única coisa que ela mostra é a ordem em que as coisas pousaram no degrau.
+- **Registro:** de estrada e de conta. Mede o mundo em milhas, sacas, libras de peso e
+  libras de dinheiro, e sabe todas de cor porque é do que vive. Fala com o desembaraço de
+  quem foi parado por guardas a vida inteira e o cansaço de quem já não espera nada disso.
+- **Ritmo:** responde de frente e depressa ao que é seco (**o tom ressonante é o FIRME** —
+  é o único do elenco que prefere quem o empurra), e devagar ao que é brando, porque a
+  brandura o desarma. Interrompe-se a meio de uma conta para perguntar as horas.
+- **Léxico:** lona, mula, vala, ponte, carroça vazia, porte, penhor, a corrida das sacas, a
+  rampa de tábua, o cesto às costas do avô.
+- **Tique:** **pergunta as horas.** Sem relógio desde setembro, pede-as antes de responder,
+  e a cela não tem sino que se ouça. É o adereço dele e de mais ninguém — a xícara é de
+  Silas, a vassoura de Davey, a saca de Grey, a corda de Amos, o botão do colete de Walter.
+  **Duas coisas que NÃO são dele:** exigir que se escreva e que se assine (é de Grey, "os
+  nomes, anote aí" — Herrick só o faz no beat em que dá o segundo termo), e dar as horas
+  sem as procurar na memória (é a assinatura declarada de Silas, e o motivo pelo qual a
+  precisão do oficial é defeito).
+- **Vocativo:** trata o perito por «senhor» em duas ou três falas ao todo — a abertura e a
+  evasiva. Mais do que isso e a marca de classe vira papel de parede; onde entra, flexiona
+  (`{g:senhor|senhora}`), porque o perito pode não o ser.
+- **Amostra:** *"Que horas são, {g:senhor|senhora}? Não é por pressa. Puseram-me aqui no
+  sábado à tarde. Ninguém me disse por quanto tempo, e daqui não se ouve sino."*
+
 ## As testemunhas de fundo (o moço do padeiro, a Sra. Wick, o guarda Tobin, o estalajadeiro)
 
 - **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou

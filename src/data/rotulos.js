@@ -131,5 +131,5 @@ export const ROTULOS_EXPLICACAO = {
   // OS-S1 (PD-06): a segunda verdade por baixo da mesma leitura falsa. O
   // rapaz do padeiro errou o morador da sala, e não a sala.
   homem_da_madrugada:
-    'Houve mesmo gente naquela sala antes de o dia nascer, e não era o relojoeiro. O recoveiro voltou à vila para a corrida das sacas que devia ao moinho, achou a porta do beco já mordida no batente, entrou pela claridade, e saiu levando da gaveta puxada o relógio de prata que empenhara em setembro. Chegou sete horas depois do buril, e foi preso por isso.',
+    'Houve mesmo gente naquela sala antes de o dia nascer, e não era o relojoeiro. O recoveiro voltou à vila para a corrida das sacas que devia ao moinho, achou a porta do beco já mordida no batente, entrou pela claridade, e saiu levando da gaveta puxada o relógio de prata que empenhara em setembro. Chegou quase oito horas depois do buril, e foi preso por isso.',
 };

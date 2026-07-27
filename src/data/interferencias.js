@@ -8,8 +8,8 @@
 //
 //   R1 — o improviso é MAIS GROSSEIRO que o crime original. O crime de sexta
 //        deixou uma lasca de vidro numa bainha; o esconderijo violado deixa
-//        quatro apoios na poeira e sebo novo na trava, e a cela deixa dois
-//        sulcos e três dedadas de cera.
+//        quatro apoios na poeira e sebo que a poeira não pegou, e a cela
+//        deixa dois sulcos e três dedadas de cera.
 //   R2 — SALDO ≥ 0. Nenhuma carta destruída é pilar da acusação: a janela
 //        fecha pelo corpo, a causa pelo corpo, o nexo pelo estojo, e o móbil
 //        tem redundância tripla (ev_livro_ordens, ev_livro_ii, corrob_pettigrew).
@@ -115,34 +115,34 @@ export const ECOS_INTERFERENCIA_TUTORIAL = {
   titulo: 'O que se moveu enquanto eu ia e vinha',
   porChave: {
     intimidar_testemunha_ocorrida: [
-      'A vizinha dos fundos do nº 9 desdisse-se entre a minha primeira volta e a segunda. Fica-me a data em que ela mudou de história, e ela vale por si: mede-se o caso pelo antes e pelo depois.',
-      'Perdi a única boca que datava uma saída pela viela. Onde o depoimento faltar, procuro o que ficou em volta da recusa: quem a procurou, e em que dia a janela se fechou.',
-      'A retratação veio no dia seguinte à minha volta ao correio. Não a discuto de ouvido: ponho a primeira folha ao lado da segunda e comparo as duas datas com as do livro do credor.',
+      'A vizinha dos fundos do nº 9 desdisse-se entre a minha primeira volta e a segunda. Fica-me a data em que ela mudou de história.',
+      'Perdi a única boca que datava uma saída pela viela. Ficam a folha antiga, a folha nova e o dia que corre entre as duas; e fica a linha "—W." no livro do credor, riscada muito antes disto.',
+      'A retratação veio no dia seguinte à minha volta ao correio. Não a discuto de ouvido: ponho a primeira folha ao lado da segunda e leio as duas.',
     ],
     intimidar_testemunha_evitada: [
-      'Foram calar a vizinha dos fundos, e o que ela sabia já estava lavrado no meu caderno. O medo chegou depois do papel.',
-      'A janela do nº 9 fechou-se tarde. Guardo o método: primeiro o que pode recuar, depois o que fica no lugar.',
-      'Contra folha assinada o medo pode pouco. A retratação entrou no processo ao lado do primeiro relato, e não por cima dele.',
+      'Foram calar a vizinha dos fundos, e o que ela sabia já estava lavrado no meu caderno.',
+      'A janela do nº 9 fechou-se depois da folha assinada. Recolho primeiro o que pode recuar, e só depois o que fica no lugar.',
+      'A retratação entrou no processo ao lado do primeiro relato, e não por cima dele.',
     ],
     destruir_evidencia_ocorrida: [
-      'A câmara dos sinos foi visitada entre a minha pergunta e a minha subida. Sobrou o vão aberto, e um vão aberto também se data: sebo novo, riscos claros na trava, quatro apoios na poeira.',
-      'O que estava atrás daquela chapa saiu de lá antes de mim. Ficou a pressa de quem o tirou, e a pressa dá mais sinal do que o crime que a fez nascer.',
-      'Cheguei tarde ao quarto cabeçote. A peça que se perdeu não volta; a subida que a levou ficou marcada de quatro apoios, e essa eu meço.',
+      'A câmara dos sinos foi visitada entre a minha pergunta e a minha subida. Sobrou o vão aberto: o sebo que a poeira não pegou, os riscos claros na trava, quatro apoios nas vigas.',
+      'O que estava atrás daquela chapa saiu de lá antes de mim. Quem subiu ao quarto cabeçote deixou na poeira mais do que a noite de sexta deixou na sala.',
+      'Cheguei tarde ao quarto cabeçote. A peça que se perdeu não volta; a subida que a levou ficou marcada de quatro apoios, e esses eu meço.',
     ],
     destruir_evidencia_evitada: [
-      'Subiram à torre por causa do que eu perguntei, e o oleado já estava na minha mala. Chegar primeiro é meio ofício.',
+      'Subiram à torre por causa do que eu perguntei, e o oleado já estava na minha mala.',
       'A chapa do quarto cabeçote foi aberta depois de mim. O que ela guardava consta do meu registro, com hora.',
-      'Foram buscar o que eu já tinha. Fica a lição, e ela é de ordem: o que se esconde alto recolhe-se antes de se falar baixo.',
+      'Foram buscar o que eu já tinha. Fica a lição, e ela é de ordem: o que se esconde alto recolhe-se antes de se falar baixo na saleta.',
     ],
     silenciar_ocorrida: [
-      'Perdi o preso antes do segundo termo. O corpo dele é morte de horas, não de dias, e a pele guarda a conta que a boca já não dá.',
-      'Onde esperava uma voz achei um homem pendurado, e dois sulcos onde devia haver um. O que o gesto teve de grosseiro ficou nos sinais, e os sinais depõem.',
-      'A testemunha faltou ao segundo inquérito. Tomo do que sobrou: a ordem dos sulcos, a reação vital de um e a ausência dela no outro, e a cera fresca numa cela sem bancada.',
+      'Perdi o preso antes do segundo termo. O corpo dele é morte de horas, não de dias, e os sinais frescos ainda apertam essa hora.',
+      'Onde esperava uma voz achei um homem pendurado, e dois sulcos onde devia haver um.',
+      'A testemunha faltou ao segundo inquérito. Tomo do que sobrou: a ordem dos sulcos, a margem viva de um e a margem morta do outro, e a cera de bancada numa cela que não tem nenhuma.',
     ],
     silenciar_evitada: [
-      'O preso morreu com a deposição já lavrada. Papel assinado e datado depõe sozinho, e este vai depor.',
+      'O preso morreu com a deposição já lavrada.',
       'Cheguei primeiro à tábua da cela. O que ele me contou da madrugada de sábado sobreviveu a ele, e é isso que o coroner há de ler.',
-      'Faltou-me o homem e ficou-me o termo. Guardo o método: tomar a fala antes de a pôr à prova, sempre.',
+      'Faltou-me o homem e ficou-me o termo. Fica o método com ele: tomar a fala antes de a pôr à prova.',
     ],
   },
 };

@@ -299,7 +299,7 @@ export const CARTAS = [
     textoDisplay: 'Meia Pegada de Argila',
     carimboPadrao: 'Meia sola de argila amarela sobre as lascas de tinta',
     descricao:
-      'No degrau do beco, assente sobre as lascas de tinta caídas do batente, a metade dianteira de uma sola marcada em argila amarela, já seca e a estalar nas bordas. A marca cobre as lascas, e nenhuma lasca a cobre. O salto não chegou a pousar: o pé apoiou-se na ponta e saiu por onde entrou. Argila daquele tom está na vala funda da estrada de Moorford, e o calçamento da High Street não a tem.',
+      'No degrau do beco, a metade dianteira de uma sola marcada em argila amarela, seca à superfície e ainda mole quando se lhe toca a borda. Do salto não há marca nenhuma. A argila assenta sobre as lascas de tinta caídas do batente, e nenhuma lasca lhe fica por cima. Argila daquele tom está na vala funda da estrada de Moorford; o calçamento da High Street é de pedra lavada.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'rastro',
@@ -382,7 +382,7 @@ export const CARTAS = [
     textoDisplay: 'Livro de Empréstimos',
     carimboPadrao: 'Iniciais, soma emprestada e um penny por xelim, semana a semana',
     descricao:
-      'Na gaveta que a chave pequena do molho abre, um livro de capa dura, mais estreito que o livro-razão e da mesma letra miúda. Cada linha traz duas iniciais, a soma emprestada, o mês, e uma coluna de pence somados semana a semana. Muitas estão riscadas de ponta a ponta, com a data da quitação à margem. Ficam abertas: "N.H., £3, mar.", e por baixo "penhor: relógio de recoveiro, set."; "L.W.", em dia até julho e sem lançamento depois; "S.C.", das primeiras páginas, com a soma inicial repetida ao pé de cada mês, sempre a mesma. Riscadas, e riscadas em setembro, "A.R." e uma antiga "—W.". Ao pé da folha de março, a mesma mão anotou: "adiantado à Sra. Tull, £2 8s".',
+      'Na gaveta que a chave pequena do molho abre, um livro de capa dura, mais estreito que o livro-razão e da mesma letra miúda. Cada linha traz duas iniciais, a soma emprestada, o mês, e uma coluna de pence somados semana a semana. Muitas estão riscadas de ponta a ponta, com a data da quitação à margem. Por riscar, estas: "N.H., £3, mar.", e por baixo "penhor: relógio de recoveiro, set."; "L.W.", em dia até julho e sem lançamento depois; "S.C.", das primeiras páginas, com a soma inicial repetida ao pé de cada mês. Riscadas, e riscadas em setembro, "A.R." e uma antiga "—W.". Ao pé da folha de março, a mesma mão anotou: "adiantado à Sra. Tull, £2 8s".',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -691,7 +691,7 @@ export const CARTAS = [
     textoDisplay: 'A Vizinha Desdiz o Que Disse',
     carimboPadrao: 'Retratação lavrada: nada viu na noite de sexta',
     descricao:
-      'Termo curto, lavrado depois do primeiro e na mesma folha: a Sra. Wick, dos fundos do nº 9, declara que se enganou, que da janela dela não se alcança a boca da viela, e que na sexta recolheu antes do escurecer. Levou a mão ao ferrolho duas vezes enquanto se lhe lia o texto. À margem, na letra do guarda: "assinou de cruz; sabe assinar o nome".',
+      'Termo curto, lavrado depois do primeiro e na mesma folha: a Sra. Wick, dos fundos do nº 9, declara que se enganou, que da janela dela não se alcança a boca da viela, e que na sexta recolheu antes do escurecer. Levou a mão ao ferrolho duas vezes enquanto se lhe lia o texto. À margem, na letra do guarda: "assinou de cruz".',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'avistamento',
@@ -750,9 +750,9 @@ export const CARTAS = [
     id: 'ev_esconderijo_vazio',
     localidade: 'torre_sino',
     textoDisplay: 'O Esconderijo Aberto',
-    carimboPadrao: 'Chapa de latão presa para trás; vazio limpo, sebo novo na trava',
+    carimboPadrao: 'Chapa de latão presa para trás; vazio limpo, sebo na trava',
     descricao:
-      'A chapa de latão do quarto cabeçote está aberta e presa para trás pela própria charneira. Por dentro, a poeira levantou-se em duas faixas paralelas da largura de um caderno, e nada mais fica no vazio. Nos dentes da trava serrilhada há riscos claros, de metal ainda por escurecer, e um resto de sebo que cede à unha. Na poeira das vigas em volta ficaram quatro apoios: dois de mão, dois de joelho.',
+      'A chapa de latão do quarto cabeçote está aberta e presa para trás pela própria charneira. Por dentro, a poeira levantou-se em duas faixas paralelas da largura de um palmo, e nada mais fica no vazio. Nos dentes da trava serrilhada há riscos claros, de metal ainda por escurecer, e um resto de sebo que a poeira ainda não pegou. Na poeira das vigas em volta ficaram quatro apoios: dois de mão, dois de joelho.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'destruicao',
@@ -792,9 +792,9 @@ export const CARTAS = [
     id: 'dep_cela_herrick',
     localidade: 'cela',
     textoDisplay: 'O Que o Recoveiro Achou de Madrugada',
-    carimboPadrao: 'Porta já mordida no batente e lampião aceso, antes de clarear',
+    carimboPadrao: 'Porta já mordida no batente e claridade dentro, antes de clarear',
     descricao:
-      'Segundo termo, tomado a pedido do preso. Declara ter voltado à vila antes das cinco da madrugada de sábado, para a corrida das sacas que devia ao moleiro; ter achado a porta do beco entreaberta, com a madeira já mordida no batente; ter entrado por haver claridade dentro; e ter achado o Sr. Arthurs caído entre a escrivaninha e a estante, com uma gaveta puxada. Declara ainda ter tomado dessa gaveta um relógio de prata, seu, empenhado em setembro por três libras, e ter saído sem tocar em mais nada. Ao fim, pergunta quem mais tem entrada franca no corredor da cela, que o primeiro-oficial da relojoaria passou por ali duas vezes desde a véspera.',
+      'Segundo termo, tomado a pedido do preso. Declara ter voltado à vila antes das cinco da madrugada de sábado, para a corrida das sacas que devia ao moleiro; ter achado a porta do beco entreaberta, com a madeira já mordida no batente; ter entrado por haver claridade dentro; e ter achado o Sr. Arthurs caído entre a escrivaninha e a estante, com uma gaveta puxada. Declara ainda ter tomado dessa gaveta um relógio de prata, seu, deixado em setembro pelas três libras de março, e ter saído sem tocar em mais nada. Ao fim, pergunta quem mais tem entrada franca no corredor da cela, que o primeiro-oficial da relojoaria passou por ali duas vezes desde a véspera.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'avistamento',
@@ -814,10 +814,24 @@ export const CARTAS = [
     localidade: 'cela',
     textoDisplay: 'Auto de Exame na Cela',
     carimboPadrao: 'Preso achado suspenso; dois sulcos no pescoço, um só com reação vital',
+    // Parecer do perito-forense (26/07/2026), acatado em três pontos:
+    //   • palidez e pergaminhamento NÃO discriminam — ocorrem nos dois sulcos;
+    //     o que separa é a infiltração sob a pele, e essa quer dissecção. O
+    //     exame externo fica com o que alcança: a borda que reagiu e a que
+    //     não reagiu, e a largura frouxa da tira de fazenda;
+    //   • a tarimba PRESA à parede oposta é prova de peso (não havia de onde
+    //     se lançar), e vale mais que a geometria do sulco;
+    //   • o encaixe da tira no rasgo da fralda é uma das duas portas de
+    //     individualização que 1893 tem, e a prosa mostra-a em vez de a
+    //     afirmar.
     descricao:
-      'Auto lavrado ao princípio da tarde: o preso foi achado suspenso pela tira do próprio casaco, presa à trave da janela alta, com os pés a três dedos do chão e a tarimba encostada à parede oposta. Ao exame do pescoço, o sulco que sobe em diagonal para o nó está pálido e seco, e a pele em volta dele não reagiu. Por baixo desse, e a atravessar a garganta a direito, corre um segundo sulco, uniforme de um lado ao outro, com a pele arroxeada e viva nas duas bordas. Nas conjuntivas, pontos vermelhos miúdos.',
+      'Auto lavrado nos fundos do posto: o preso foi achado suspenso por uma tira de fazenda atada à grade do postigo, com os pés a três dedos do chão. A tarimba fica na parede oposta, presa onde sempre esteve. À fralda do casaco dobrado sobre a enxerga falta uma banda, e a tira assenta-lhe no rasgo. Ao exame do pescoço, o sulco que sobe em diagonal para o nó é uma faixa larga e frouxa, e a pele das duas margens tem a cor do resto do pescoço. Por baixo desse, e a atravessar a garganta a direito, corre um segundo sulco, uniforme de um lado ao outro, com a pele arroxeada e viva nas duas bordas. A face está congesta, e nas conjuntivas há pontos vermelhos miúdos.',
+    // A voz do mestre lê a FAMÍLIA e a ORDEM, e para aí. Concluir «por mãos
+    // alheias» seria a G8 posta de lado e a autoria dada de graça — o que a
+    // pele autoriza dizer é qual sulco se fez em corpo que ainda circulava,
+    // e qual se fez depois.
     vozMestre:
-      'Dois sulcos, e a ordem lê-se pela reação vital: o de baixo é horizontal e tem a equimose viva, o de cima sobe para o nó e não tem nenhuma. O laço horizontal apertou-o com ele vivo; a corda oblíqua veio depois, sobre um homem que já não sangrava. Quem o pendurou não sabia que a pele guarda a conta.',
+      'Dois sulcos, e a ordem lê-se pela reação vital: o de baixo é horizontal e tem a equimose viva; o de cima sobe para o nó e não tem margem reagida nenhuma. Sulco com pele viva nas bordas é de laço apertado sobre homem que ainda circulava. Face congesta e pontos nas conjuntivas dizem compressão do pescoço, e não peso de corpo pendurado. O que o exame externo dá, dá; a incisão do sulco de cima diria o resto, e essa não é minha para mandar.',
     // Sem `declaranteId`: o auto não é alegação de terceiro. Quem examina o
     // pescoço é o próprio perito, e por isso esta carta não entra no mapa de
     // procedência — não há boca a contar num papel que ele mesmo lavrou.
@@ -841,8 +855,14 @@ export const CARTAS = [
     localidade: 'cela',
     textoDisplay: 'Cera Parda na Tábua da Tarimba',
     carimboPadrao: 'Três dedadas de cera de encerar cabo, ainda moles',
+    // O marcador de frescor é o CHEIRO, e não o brilho: a cera de bancada é
+    // cera de abelha parda cortada com terebintina, e enquanto a terebintina
+    // não evapora a pasta cede à mão e cheira. «Ainda não assentou o brilho»
+    // pendurava um advérbio de tempo numa observação (parecer do perito).
+    // O inventário do cubículo sai daqui: ele já está na prosa da cela, e
+    // repeti-lo com a oração «que se encere» fazia a exclusão pelo jogador.
     descricao:
-      'Na aresta da tábua da tarimba, do lado que dá para a porta, três dedadas de uma cera parda que cede ao calor da mão e ainda não assentou o brilho. Do outro lado da tábua, onde a mão de quem dorme se apoia, a madeira está limpa. Na cela não há bancada, nem estojo, nem ferramenta que se encere: o balde, a enxerga e esta tábua são o que o cubículo tem.',
+      'Na aresta da tábua da tarimba, do lado que dá para a porta, três dedadas de uma cera parda que cede ao calor da mão e ainda cheira a terebintina. Do outro lado da tábua, onde a mão de quem dorme se apoia, a madeira está limpa.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'fragmento',
