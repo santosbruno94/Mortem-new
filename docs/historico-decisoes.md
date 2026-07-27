@@ -3430,6 +3430,52 @@ A OS "Reação Vital Condicionante", que a proposta punha entre as duas escadas,
 foi escrita**: a proposta a declara "recomendada, não bloqueante na forma auto-de-exame",
 e a cela entrou como auto de exame.
 
+#### O pipeline `revisar-prosa` — o que os três acharam
+
+Passada obrigatória (regra do `CLAUDE.md`), com os três revisores em paralelo.
+**Resultado: seis bloqueantes, todos corrigidos, e o gate repetido a verde.**
+
+O **`perito-forense`** não achou bloqueante e confirmou a leitura da cela contra
+`kb-medicina-legal/encenacao.md`, cláusula a cláusula. Acataram-se quatro correções
+de fundamentação, e a primeira é a que importa: **palidez e pergaminhamento não
+discriminam** — ocorrem nos dois sulcos, e o que separa é a infiltração sob a pele,
+que quer dissecção. O exame externo ficou com o que alcança (a margem que reagiu e a
+que não reagiu, a largura frouxa da tira de fazenda), e o mestre passou a carregar a
+reserva honesta em vez de a esconder. Entraram ainda a **tarimba presa** à parede
+oposta (prova de peso maior que a geometria do sulco: não havia de onde se lançar), o
+**encaixe da tira no rasgo da fralda** — uma das duas portas de individualização que
+1893 tem — e o penhor dito «pelas três libras de março», que desfazia a leitura de um
+segundo empréstimo.
+
+O **`editor-critico`** reprovou com três, e os três eram de fair play, não de gosto:
+a `vozMestre` do auto **concluía autoria** («quem o pendurou não sabia que a pele
+guarda a conta»); `ev_pegada_argila` **reconstruía o trajeto** de quem não estava em
+cena; e — o pior — **o segundo termo nunca era dito em cena**: os quatro b2 de Herrick
+pediam que se escrevesse e marcavam a carta, e o jogador tinha de abrir a gaveta para
+saber o que lhe haviam dito. É o §5.1 na letra, e a `GR10-1` não o apanhava por só
+cobrir cartas de álibi. Mais: os **tiques emprestados** devolvidos aos donos (exigir
+que se escreva é de Grey; dar as horas sem as procurar é a assinatura declarada de
+Silas, e pô-la no recoveiro apagava o defeito que denuncia o oficial), treze fechos
+epigramáticos aplainados, o vocativo «senhor» de oito para dois, e os ecos de
+interferência reescritos onde eram paráfrase dos genéricos.
+
+O **`fiscal-continuidade`** achou três bloqueantes de mundo. **O fio das «cartas que
+não iam no saco» não existia no papel** — vivia só na proposta e nos comentários, e
+o rótulo de confronto de Agnes citava um termo que nada dizia de correspondência.
+**O preso estava na cela desde sábado**, e o prenúncio dizia que o oficial passara
+por ali «desde a véspera», que é sexta. E **a prosa-base da cela era incondicional**:
+disparado o silenciamento, lia-se o recoveiro sentado na tábua e, no parágrafo
+seguinte, o auto de exame do enforcamento dele. O preso vivo passou a bloco
+contingente, pelo mesmo padrão com que o posto troca o relato da Sra. Wick pela
+retratação.
+
+Aprovado por prova positiva, e vale registrar: o calendário fecha (13/out = sexta,
+15/out = domingo, contra os proclamas e o aro «pronto até 30 de outubro»); as vinte e
+nove sextas de 31/mar a 13/out conferem; a taxa de um penny por xelim governa os dois
+livros com a mesma aritmética; e a noite fecha boca a boca — briga pouco antes das
+sete, estalagem às 19h40, Tobin às 20h, a ceia, a saída de Agnes pouco antes das nove,
+o buril às 21h.
+
 ### Aberto para a OS seguinte
 
 - **Os anéis do Ato I e do Ato II** (PD-07 por inteiro), com o gate de QA da interface

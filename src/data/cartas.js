@@ -299,7 +299,7 @@ export const CARTAS = [
     textoDisplay: 'Meia Pegada de Argila',
     carimboPadrao: 'Meia sola de argila amarela sobre as lascas de tinta',
     descricao:
-      'No degrau do beco, a metade dianteira de uma sola marcada em argila amarela, seca à superfície e ainda mole quando se lhe toca a borda. Do salto não há marca nenhuma. A argila assenta sobre as lascas de tinta caídas do batente, e nenhuma lasca lhe fica por cima. Argila daquele tom está na vala funda da estrada de Moorford; o calçamento da High Street é de pedra lavada.',
+      'No degrau do beco, a metade dianteira de uma sola marcada em argila amarela, seca à superfície e ainda mole quando se lhe toca a borda, com as cabeças dos cravos impressas em três fileiras. Do salto não há marca nenhuma. A argila assenta sobre as lascas de tinta caídas do batente, e nenhuma lasca lhe fica por cima. Argila daquele tom está na vala funda da estrada de Moorford; o calçamento da High Street é de pedra lavada.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'rastro',
@@ -794,7 +794,7 @@ export const CARTAS = [
     textoDisplay: 'O Que o Recoveiro Achou de Madrugada',
     carimboPadrao: 'Porta já mordida no batente e claridade dentro, antes de clarear',
     descricao:
-      'Segundo termo, tomado a pedido do preso. Declara ter voltado à vila antes das cinco da madrugada de sábado, para a corrida das sacas que devia ao moleiro; ter achado a porta do beco entreaberta, com a madeira já mordida no batente; ter entrado por haver claridade dentro; e ter achado o Sr. Arthurs caído entre a escrivaninha e a estante, com uma gaveta puxada. Declara ainda ter tomado dessa gaveta um relógio de prata, seu, deixado em setembro pelas três libras de março, e ter saído sem tocar em mais nada. Ao fim, pergunta quem mais tem entrada franca no corredor da cela, que o primeiro-oficial da relojoaria passou por ali duas vezes desde a véspera.',
+      'Segundo termo, tomado a pedido do preso. Declara ter voltado à vila antes das cinco da madrugada de sábado, para a corrida das sacas que devia ao moleiro; ter achado a porta do beco entreaberta, com a madeira já mordida no batente; ter entrado por haver claridade dentro; e ter achado o Sr. Arthurs caído entre a escrivaninha e a estante, com uma gaveta puxada. Declara ainda ter tomado dessa gaveta um relógio de prata, seu, deixado em setembro pelas três libras de março, e ter saído sem tocar em mais nada. Perguntado do que costuma levar na estrada, declara levar, além do saco selado do correio, encomendas e cartas que os fregueses lhe põem na mão à saída, e nomeia entre esses fregueses a loja da High Street. Ao fim, pergunta quem mais tem entrada franca no corredor da cela, que o primeiro-oficial da relojoaria passou por ali duas vezes desde que o puseram nela.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'avistamento',

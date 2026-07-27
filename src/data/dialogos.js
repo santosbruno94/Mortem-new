@@ -157,7 +157,7 @@ const OPCOES_B3_WALTER = [
 const ALFINETADA_HERRICK = {
   E1: ['Acaba a resposta e não torna a sentar-se. O casaco dobrado desce dos joelhos para a tábua, e a mão fica em cima dele.'],
   E2: [
-    '"{g:O senhor|A senhora} já falou com meia rua antes de descer a este corredor." Não é pergunta, e ele não espera resposta. Puxa o casaco contra o peito e senta-se na tábua. "Pois pergunte o que falta. Sou o único desta vila que não tem ofício nesta rua para responder por si, e disso já me fiz a razão." E, mais baixo, quase para dentro: "Que horas são agora?"',
+    '"{g:O senhor|A senhora} já falou com meia rua antes de descer a este corredor." Não é pergunta, e ele não espera resposta. Puxa o casaco contra o peito e senta-se na tábua. "Pois pergunte o que falta. Sou o único desta vila que não tem ofício nesta rua para responder por si, e a isso já me acostumei na estrada." E, mais baixo, quase para dentro: "Que horas são agora?"',
   ],
 };
 
@@ -169,8 +169,8 @@ const OPCOES_B3_HERRICK = [
 ];
 
 const OPCOES_B2_HERRICK = [
-  { rotulo: '"O moleiro diz que lhe devia a corrida de sábado. Devia?"', vaiPara: 'b2_firme', tom: 'firme' },
-  { rotulo: '"Falaram-me das sacas da feira. Como foi essa madrugada?"', vaiPara: 'b2_cordial', tom: 'cordial' },
+  { rotulo: '"Devia alguma corrida ao moinho, na madrugada de sábado?"', vaiPara: 'b2_firme', tom: 'firme' },
+  { rotulo: '"As sacas da feira, na madrugada de sábado. Como foi?"', vaiPara: 'b2_cordial', tom: 'cordial' },
   { rotulo: '"A corrida das sacas do moinho: a que horas se carrega?"', vaiPara: 'b2_tecnico', tom: 'tecnico' },
   { rotulo: '"A feira de sábado abre cedo?"', vaiPara: 'b2_obliquo', tom: 'obliquo' },
 ];
@@ -420,7 +420,7 @@ export const DIALOGOS = {
         fala: [
           'Ouve o termo até o fim, as mãos nos joelhos. "O homem da estrada."',
           '"Eu disse ao guarda que ele rondava a porta dos fundos desde o verão, e disse-o porque é verdade: recebia-lhe eu as caixas, contava-lhe as peças à frente dele, e nunca o deixei pousar nada cá dentro." As mãos não saem dos joelhos. "Não me alegra ter dito."',
-          '"Do que ele conta da madrugada, o senhor há de tirar o peso." E, depois de um momento: "Homem preso conta o que o solte."',
+          '"Do que ele conta da madrugada, {g:o senhor|a senhora} há de tirar o peso." E, depois de um momento: "Homem preso conta o que o solte."',
         ],
         opcoes: [],
       },
@@ -674,7 +674,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.treatment}, que a feira não espera defunto."',
+          'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Um lote fica de lado, por levar: são as que o recoveiro devia ter corrido à feira de madrugada, e não correu. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.treatment}, que a feira não espera defunto."',
         ],
         opcoes: [
           { rotulo: '"Pare a saca. Onde esteve na sexta à noite?"', rotuloVars: ['"Pare a saca. Onde esteve na sexta à noite?"', '"Pouse a saca um instante. A sexta à noite: onde?"'], vaiPara: 'b1_firme', tom: 'firme' },
@@ -830,7 +830,7 @@ export const DIALOGOS = {
       reacao_pesos: {
         fala: [
           'Limpa as duas mãos na perna antes de tocar o caderno de oleado. O dedo, branco de farinha, desce a coluna dos pesos e para na linha de outubro.',
-          '"Entrada, quatro onças e meia. Saída, quatro e um quarto." Torna a passar o dedo pela mesma linha. "Está aqui escrito. Estava aqui escrito antes de eu me queixar."',
+          '"Entrada, quatro onças e meia. Saída, quatro e um quarto." Torna a passar o dedo pela mesma linha. "Um quarto de onça, e o relógio do meu pai ficou valendo menos do que o conserto que paguei adiantado." "Está aqui escrito. Estava aqui escrito antes de eu me queixar."',
           'Fecha o caderno e pousa-o na tábua da rampa. "Levei a queixa três vezes ao balcão daquela loja, {detective.treatment}, e três vezes fui atendido pelo oficial. À terceira exigi papel, e o papel lavrei-o em casa do guarda, diante de testemunhas."',
           'A mó troca de compasso atrás dele, e ele não se volta. "Chamei ladrão ao morto. O ladrão recebia-me ao balcão."',
         ],
@@ -1071,7 +1071,7 @@ export const DIALOGOS = {
             fala: [
               'Ouve o resto sem mexer as mãos, que ficam abertas sobre a mesa.',
               'Endireita-se na cadeira, e a voz sai sem altura nenhuma. "O que o homem da estrada apanhou foi o princípio. Houve mais, e não foi ele que o ouviu." Cala-se um momento. "Fui eu que lhe contei das cartas de Moorford. Trouxe-as sabidas de casa, para o caso de o pedido falhar; o pedido falhou, e eu disse-lho da porta antes de sair."',
-              '"Sabia o que o casamento fazia ao testamento. Às nove daquela noite eu julgava-me ganho sem ter posto a mão em ninguém." Cala-se, e o resto vem devagar. "Se aquilo pesou na ceia, é {g:o senhor|a senhora} que mo há de dizer. Eu não durmo para mo dizer sozinho."',
+              '"Sabia o que o casamento fazia ao testamento. Àquela hora da noite eu julgava-me ganho sem ter posto a mão em ninguém." Cala-se, e o resto vem devagar. "Se aquilo pesou na ceia, é {g:o senhor|a senhora} que mo há de dizer. Eu não durmo para mo dizer sozinho."',
             ],
           },
         ],
@@ -1295,8 +1295,8 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'O guarda abre o corredor com o joelho, que traz as duas mãos ocupadas de papel, e fica à porta. Nathan Herrick espera de pé junto à grade, o casaco de estrada dobrado sobre o braço, as botas cobertas de argila seca até o cano.',
-          '"Que horas são, {g:senhor|senhora}? Não é por pressa." A pergunta vem antes de qualquer outra coisa, e a resposta ele recebe sem comentar. "Puseram-me aqui no sábado à tarde. Ninguém me disse por quanto tempo, e daqui não se ouve sino."',
+          'O guarda abre o corredor com o joelho, que traz as duas mãos ocupadas de papel, e fica à porta. Nathan Herrick levanta-se da tábua ao ouvir a chave, o casaco de estrada sobre o braço, os pés só de meia sobre o tijolo.',
+          '"Que horas são, {g:senhor|senhora}? Não é por pressa." A pergunta vem antes de qualquer outra coisa, e a resposta ele recebe sem comentar. "Puseram-me aqui no sábado à tarde. Ninguém me disse por quanto tempo, e os sinos estão de boca para baixo até domingo."',
         ],
         opcoes: [
           { rotulo: '"A sua noite de sexta. E deixe a história da estrada para depois."', rotuloVars: ['"A sua noite de sexta. E deixe a história da estrada para depois."', '"A sexta à noite, Herrick. Sem a estrada por cima."'], vaiPara: 'b1_firme', tom: 'firme' },
@@ -1327,8 +1327,8 @@ export const DIALOGOS = {
       b1_tecnico: {
         fala: [
           '"Hora de partida, sete. Caminho, a estrada de Moorford até a ponte de Caulfield: três milhas e meia por vala funda."',
-          '"Paragens, nenhuma, que carroça vazia não se para. Dormi sob a lona e vim com o dia." Conta as milhas pelos dedos e chega ao fim com dois por dobrar: [[alibi_herrick]].',
-          'A meio da conta interrompe-se. Interrompe-se a meio, e o pulso que ergue não tem nada. "Pode dizer-me as horas outra vez?"',
+          '"Paragens, nenhuma, que carroça vazia não se para. Ia buscar carga à estação de Moorford ao romper do dia, e não a houve; dormi sob a lona e vim com o dia." Conta as milhas pelos dedos e chega ao fim com dois por dobrar: [[alibi_herrick]].',
+          'A meio da conta interrompe-se, e o pulso que ergue não tem nada. "Pode dizer-me as horas outra vez?"',
         ],
         opcoes: OPCOES_B2_HERRICK,
       },
@@ -1348,7 +1348,7 @@ export const DIALOGOS = {
       b2_firme: {
         fala: [
           '"Devia." Fica um momento com os olhos no corredor. "Devia-lhe a corrida, e fui buscá-la antes de clarear, que é como se faz na véspera de feira."',
-          '"Vou dizer ao senhor o que não disse ao guarda." A voz baixa sem que ninguém lho peça. "Voltei à vila antes das cinco. A porta do beco estava entreaberta, com a madeira já mordida no batente, e eu entrei porque havia claridade lá dentro. O Sr. Arthurs estava caído entre a escrivaninha e a estante, e uma gaveta puxada."',
+          '"Vou dizer a {g:o senhor|a senhora} o que não disse ao guarda." A voz baixa sem que ninguém lho peça. "Voltei à vila antes das cinco. A porta do beco estava entreaberta, com a madeira já mordida no batente, e eu entrei porque havia claridade lá dentro. O Sr. Arthurs estava caído entre a escrivaninha e a estante, e uma gaveta puxada."',
           '"Dessa gaveta tirei o meu relógio de prata, que ele me tomou em setembro pelas três libras de março, e não pus a mão em mais nada." Chama quem escreve e assina por baixo: [[dep_cela_herrick]].',
         ],
         opcoes: OPCOES_B3_HERRICK,
@@ -1363,7 +1363,7 @@ export const DIALOGOS = {
       },
       b2_tecnico: {
         fala: [
-          '"Carrega-se antes das cinco. Doze sacas de cento e quarenta libras, e a rampa do moinho é de tábua: com o dia claro já não se sobe sozinho."',
+          '"Carrega-se antes das cinco. Oito sacas de cento e quarenta libras, que é o que a mula puxa, e a rampa do moinho é de tábua: sozinho, e com a feira já montada, não se sobe."',
           '"Portanto às quatro e três quartos eu estava na vila, e não à hora que disse ao guarda." Corrige-se como quem corrige um peso. "A porta do beco estava entreaberta e a madeira mordida no batente pelo lado de fora. Entrei pela claridade e achei o Sr. Arthurs no chão do escritório, com uma gaveta puxada."',
           '"Da gaveta tirei o que era meu: o relógio de prata do meu pai, que ele me tomou em penhor em setembro, pelas três libras que me emprestara em março." E mais nada, diz ele, e é o que fica escrito: [[dep_cela_herrick]].',
         ],
@@ -1415,7 +1415,7 @@ export const DIALOGOS = {
       reacao_pegada: {
         fala: [
           'Olha o desenho da sola por cima do papel e não estende a mão. "É minha. Bota de recoveiro tem a sola cravejada em três fileiras, e argila da vala de Moorford não sai nem à escova."',
-          '"Pisei o degrau depois de a porta estar aberta, e não antes. O senhor tem aí a ordem em que as coisas caíram: a tinta primeiro, a minha sola por cima." Torna a sentar-se. "Se eu tivesse aberto aquela porta, a argila estaria por baixo das lascas."',
+          '"Pisei o degrau depois de a porta estar aberta, e não antes. {g:O senhor|A senhora} tem aí a ordem em que as coisas caíram: a tinta primeiro, a minha sola por cima." Torna a sentar-se. "Se eu tivesse aberto aquela porta, a argila estaria por baixo das lascas."',
         ],
         opcoes: [],
       },
@@ -1429,8 +1429,8 @@ export const DIALOGOS = {
       },
       reacao_briga: {
         fala: [
-          'Reconhece o termo pelo formato antes de o ler. "Fui eu que a levei ao posto, no sábado à tarde."',
-          '"Estive à porta às sete, para pedir prazo, e não cheguei a bater: lá dentro havia dois homens aos gritos e não se pede prazo em casa de briga. Do degrau apanhei uma frase, e uma só."',
+          'Reconhece o termo pelo formato antes de o ler. "Fui eu que a levei ao posto, no sábado, à hora de abrir."',
+          '"Estive à porta pouco antes das sete, para pedir prazo, e não cheguei a bater: lá dentro havia dois homens aos gritos e não se pede prazo em casa de briga. Do degrau apanhei uma frase, e uma só, e saí antes que aquela porta se tornasse a abrir."',
           '"Fui dizer o que ouvi para não me perguntarem o que fazia eu ali." Puxa o casaco contra o peito e não torna a largá-lo.',
         ],
         opcoes: [],

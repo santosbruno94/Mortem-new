@@ -71,7 +71,7 @@ export const INTERFERENCIAS_TUTORIAL = {
         comoSoube: 'o papel pousado na saleta diz ao interrogado exatamente até onde a perícia já chegou',
       },
       efeito: { cartaDestruida: 'ev_livro_ii', cartasNovas: ['ev_esconderijo_vazio'] },
-      anuncio: 'O adro de S. Miguel amanheceu destrancado, e a escada da torre tem barro fresco.',
+      anuncio: 'Acharam o adro de S. Miguel destrancado, e a escada da torre tem barro fresco.',
     },
     {
       // DEGRAU 3 — SILENCIAR. Vivo, o recoveiro é a ruína da manhã: a porta
@@ -95,7 +95,7 @@ export const INTERFERENCIAS_TUTORIAL = {
         cartaDestruida: 'dep_cela_herrick',
         cartasNovas: ['dep_achado_cela', 'ev_cera_tarimba'],
       },
-      anuncio: 'O posto mandou chamar o legista para os fundos, e fechou o corredor da cela.',
+      anuncio: 'O posto fechou o corredor da cela e mandou chamar quem examine.',
     },
   ],
 };
@@ -117,7 +117,7 @@ export const ECOS_INTERFERENCIA_TUTORIAL = {
     intimidar_testemunha_ocorrida: [
       'A vizinha dos fundos do nº 9 desdisse-se entre a minha primeira volta e a segunda. Fica-me a data em que ela mudou de história.',
       'Perdi a única boca que datava uma saída pela viela. Ficam a folha antiga, a folha nova e o dia que corre entre as duas; e fica a linha "—W." no livro do credor, riscada muito antes disto.',
-      'A retratação veio no dia seguinte à minha volta ao correio. Não a discuto de ouvido: ponho a primeira folha ao lado da segunda e leio as duas.',
+      'A retratação veio depois da minha volta ao correio, e não antes. Não a discuto de ouvido: ponho a primeira folha ao lado da segunda e leio as duas.',
     ],
     intimidar_testemunha_evitada: [
       'Foram calar a vizinha dos fundos, e o que ela sabia já estava lavrado no meu caderno.',

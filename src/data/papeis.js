@@ -125,7 +125,11 @@ export const PAPEIS = {
     modulosMinimos: {
       mobilForte: true, // dívida registrada e penhor tomado
       alibiRefutavel: true, // a estrada que ele jura, contra o rastro na sala
-      segredoDuasRotas: true, // o penhor recolhido: o rastro e o livro do credor
+      // ROTA ÚNICA, e é desenho, não falta: o mesmo rastro que lhe derruba o
+      // paradeiro é o que revela o que ele foi buscar. Não vira armadilha
+      // porque quem quebra o álibi recebe o segredo no mesmo gesto — ao
+      // contrário do véu e da isca, que têm duas rotas cada.
+      segredoDuasRotas: false,
       presoPeloInquerito: true, // a prisão é ato da fonte, não conclusão do jogador
     },
   },

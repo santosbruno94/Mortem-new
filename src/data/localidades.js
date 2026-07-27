@@ -237,7 +237,7 @@ export const LOCALIDADES = [
         eventoId: 'coacao_wick',
         quando: 'disparado',
         paragrafos: [
-          'Onde estava o relato da vizinha há agora duas folhas presas pelo mesmo alfinete, e a de cima é [[dep_retratacao_wick]]. "Voltou atrás esta manhã, e fechou-me a janela na cara. Gente de fundos volta sempre atrás."',
+          'Onde estava o relato da vizinha há agora duas folhas presas pelo mesmo alfinete, e a de cima é [[dep_retratacao_wick]]. "Voltou atrás ainda agora, e fechou-me a janela na cara. Gente de fundos volta sempre atrás."',
         ],
       },
     ],
@@ -267,12 +267,24 @@ export const LOCALIDADES = [
     acoesEspeciais: [],
     prosa: [
       'Um corredor de tijolo atrás da sala da frente, e ao fim dele um cubículo de porta gradeada: enxerga, balde, e uma tábua de tarimba fixa à parede. A janela alta é um postigo de duas grades cruzadas, à altura de um homem em pé. Cheira a cal e a palha molhada.',
-      'Nathan Herrick está sentado na tábua, o casaco de estrada dobrado sobre os joelhos. As botas, por lavar, ficaram ao pé da enxerga.',
     ],
     // OS-S1 · INTERFERÊNCIA `silenciar_herrick` (PD-11, §7.4 da proposta). A
     // cela é AUTO DE EXAME, não segundo mural: duas cartas, e o veredicto
     // sobre esta morte é do segundo inquérito do coroner, fora de cena (D12).
+    //
+    // O PRESO VIVO TAMBÉM É CONTINGENTE, e tem de ser: a prosa-base renderiza
+    // sempre, e sem esta separação o jogador lia o recoveiro sentado na tábua
+    // e, no parágrafo seguinte, o auto de exame do enforcamento dele (achado
+    // do `fiscal-continuidade` no gate desta OS). É o mesmo padrão com que o
+    // posto troca o relato da Sra. Wick pela retratação.
     blocosContingentes: [
+      {
+        eventoId: 'silenciar_herrick',
+        quando: 'nao_disparado',
+        paragrafos: [
+          'Nathan Herrick está sentado na tábua, o casaco de estrada dobrado sobre os joelhos. As botas, por lavar, ficaram ao pé da enxerga, com a argila da estrada ainda nas solas.',
+        ],
+      },
       {
         eventoId: 'silenciar_herrick',
         quando: 'disparado',
