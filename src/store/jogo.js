@@ -187,6 +187,12 @@ export function estadoInicialCaso() {
     // perde). Sem `interferencias` no pacote (o tutorial), fica sempre [].
     // O motor de veredicto jamais lê. [{ id, hora, evitada }]
     interferenciasDisparadas: [],
+    // OS-S2 (Frente A): ids de eventos cuja NOTÍCIA o jogador já arquivou.
+    // O aviso «Correu palavra na vila» (NoticiaVila) mostra cada disparo
+    // uma vez na mesa — anúncio + comoSoube, sem nomear ninguém —; arquivado,
+    // resta o registro do Diário, que o disparo já escrevia. Dado de UI puro;
+    // o motor jamais lê.
+    noticiasLidas: [],
     // FASE 4: o eco do legista PÓS-CASO sobre interferências ocorridas/
     // evitadas (mesmo mecanismo do eco de falha, FASE 6). Derivado em
     // submeterAcusacao; reanexado às conclusões a cada consolidação.
@@ -312,6 +318,7 @@ export const useJogo = create(
       eventosConfronto: [],
       escolhaContradicao: null,
       interferenciasDisparadas: [],
+      noticiasLidas: [],
       ecoInterferencias: [],
       log: [
         ...s.log,
@@ -676,6 +683,15 @@ export const useJogo = create(
       log: [...s.log, ...logs],
     });
   },
+
+  // OS-S2 (Frente A): arquiva as notícias correntes — o aviso da mesa some
+  // e o registro fica só no Diário (que já as tinha desde o disparo).
+  arquivarNoticias: () =>
+    set((s) => ({
+      noticiasLidas: [
+        ...new Set([...(s.noticiasLidas || []), ...s.interferenciasDisparadas.map((d) => d.id)]),
+      ],
+    })),
 
   // Ação especial do Termômetro: gera a carta de algor mortis a partir da
   // temperatura corrente. O modelo (37°C, ~1°C/h, ambiente) mora INTEIRO em

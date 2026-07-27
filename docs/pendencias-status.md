@@ -366,6 +366,11 @@ cinco ficaram, e cada um por um motivo:
 | P-4 | **Duas derivas da KB em relação ao código.** O exemplo trabalhado de algor em `tanatologia.md` §1 usa morte às 22 h e IPM 13 h, contra as 21 h e IPM 16 h do `seed.js`; e a KB atribui o teto de 23 h da janela durável ao livor fixo, quando hoje ele vem da rotina interrompida do relógio de bolso (`horaRotina: -1`) | Idem — **decisão sua**. Nenhuma foi introduzida nesta rodada |
 | P-5 | **O relatório de 27/07 diz «Walter terminou com 5 provas contra si (mais que o culpado!)».** Verdadeiro da mesa daquele jogador (34 de 51); falso do catálogo, onde 5 apontam Walter e **7** apontam Silas | O relatório é versionado **verbatim** e não se corrige. Fica a ressalva aqui, para o número não fundar decisão de paridade de iscas |
 
+**Atualização de 27/07/2026 — OS-S2 executada:** P-1 (os dois gestos, Frente C-1), P-2
+(a cela, Frente C-2), P-3 (o carimbo do rigor, Frente B, decisão do usuário) e P-4 (as
+duas derivas da KB, Frente B, decisão do usuário) estão **fechados**; ata em
+`historico-decisoes.md`. Só o P-5 permanece, como ressalva de leitura.
+
 ---
 
 ## Verificação das pendências da OS-S1 (27/07/2026)

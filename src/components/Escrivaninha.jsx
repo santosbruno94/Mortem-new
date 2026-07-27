@@ -17,6 +17,7 @@ import FichaEvidencia from './FichaEvidencia.jsx';
 import AvisoCartaPousada from './AvisoCartaPousada.jsx';
 import AvisoAnotacaoMural from './AvisoAnotacaoMural.jsx';
 import Caderneta from './Caderneta.jsx';
+import NoticiaVila from './NoticiaVila.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
 import MuralAcusacao from './MuralAcusacao.jsx';
@@ -201,6 +202,13 @@ export default function Escrivaninha() {
         <div className="relative flex-1 min-h-0 mesa-madeira">
           <div className="luz-de-vela" aria-hidden />
           <RelogioBolso />
+          {/* OS-S2 (Frente A): a notícia do que se moveu na vila, na chegada
+              seguinte à mesa. POUSA ABSOLUTA na beira baixa do tampo (sobre a
+              bandeja, longe das etiquetas da prancha): uma faixa em fluxo
+              encolhia o contêiner da prancha e punha o solucionador de
+              etiquetas a oscilar (Maximum update depth) — aqui nenhum
+              contêiner muda de tamanho. */}
+          <NoticiaVila />
 
           {!temEspaco ? (
             mesa2D

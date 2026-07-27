@@ -23,7 +23,7 @@ O corpo, cessada a circulação, perde calor até igualar o ambiente. A regra pr
 |---|---|
 | 1–2 °C | 1–2 h |
 | 6 °C | ~6 h |
-| 13 °C (corpo a 24 °C) | ~13 h |
+| 16 °C (corpo a 21 °C) | ~16 h |
 | corpo igual ao ambiente | ≥ (37 − Tambiente) h — só um **piso** |
 
 **Limites conhecidos em 1893.** O resfriamento não é linear (há um platô inicial de
@@ -33,8 +33,8 @@ cobertas, temperatura e correntes de ar do cômodo, superfície de apoio, imers�
 **O sinal morre com o equilíbrio térmico:** igualada a temperatura da sala, o algor
 nada mais informa além de "ao menos tantas horas".
 
-**No caso tutorial:** corpo a 24 °C, sala a 11 °C → queda de 13 °C → ~13 h de IPM,
-convergindo com o rigor e o livor para a morte às 22 h da véspera. Medido cedo, o algor
+**No caso tutorial:** corpo a 21 °C, sala a 11 °C → queda de 16 °C → ~16 h de IPM,
+convergindo com o rigor e o livor para a morte às 21 h da véspera. Medido cedo, o algor
 **aperta** a janela (±2 h); deixado para depois, o corpo caminha para o equilíbrio e o
 sinal perde precisão — a pressão diegética do relógio mole.
 
@@ -86,24 +86,39 @@ do corpo (as não apoiadas — os pontos de pressão contra a superfície ficam 
    `protocolo-exame.md`). No tutorial, os livores nas costas de um corpo deitado de
    costas são compatíveis — ninguém o moveu.
 
-O livor é DURÁVEL: uma vez fixo, não se desfaz. É metade da âncora de solvabilidade.
+O livor é DURÁVEL: uma vez fixo, não se desfaz. É o teto largo que fica quando os
+perecíveis degradam.
 
 ---
 
 ## 4. A âncora durável e a convergência
 
-O livor fixo dá o **piso** ("morreu há ≥ 12 h" → antes das 23 h de 13/out no tutorial).
-Falta o **teto**. Num corpo fresco, o teto vem do rigor e do algor — perecíveis. Para
-garantir que o caso feche **em qualquer rota**, o tutorial acrescenta uma âncora
-durável não-corporal:
+O livor fixo dá um primeiro **teto**, largo ("morreu há ≥ 12 h", contadas do exame —
+no tutorial, das 13 h de 14/out para trás: antes da 1 h). Falta o **piso**, e falta um
+teto que aperte. Num corpo fresco, o aperto vem do rigor e do algor — perecíveis. Para
+garantir que o caso feche **em qualquer rota**, o tutorial ancora a janela em dois
+duráveis não-corporais:
 
-- **"Visto por última vez com vida"** (`dep_visto_vivo`): a ceia servida às 20 h de
-  13/out. A morte não pode anteceder isso → **piso** durável.
-- Combinado ao livor fixo (teto), fecha uma janela finita (20 h–23 h) que contém a
-  hora real (22 h), sem depender de nenhum perecível.
+- **"Visto por última vez com vida"** (`dep_visto_vivo`): a vitrine fechada às 20 h de
+  13/out — o guarda Tobin viu o relojoeiro correr as tampas. A morte não pode anteceder
+  isso → **piso** durável.
+- **A rotina interrompida** (`ev_relogio_bolso`): o hábito da corda às 23 h de 13/out
+  ficou por cumprir. A morte não pode ser posterior a ele → **teto** durável, que
+  aperta o do livor.
 
-O rigor e o algor, quando frescos, **apertam** essa janela; degradados, apenas param
-de apertá-la. **O durável sempre resolve.**
+Juntos fecham uma janela finita (20 h–23 h) que contém a hora real (21 h), sem
+depender de nenhum perecível. O rigor e o algor, quando frescos, **apertam** essa
+janela; degradados, apenas param de apertá-la. **O durável sempre resolve.**
+
+**Emenda de 27/07/2026 (OS-S2 · Frente B, decisão do usuário).** Três derivas deste
+dossiê em relação ao código, apuradas na triagem do playtest cego de 27/07 e no
+pipeline de revisão desta emenda: o exemplo trabalhado do §1 usava a morte às 22 h e
+um IPM de ~13 h, números de uma versão anterior do caso (o `seed.js` crava **21 h** e
+**16 h**); este §4 atribuía o teto durável de 23 h ao **livor fixo**, quando ele vem
+da **rotina interrompida** do relógio de bolso (`horaRotina`) — ao livor fica o teto
+largo do ≥ 12 h; e o piso de 20 h vinha glosado como «ceia servida», quando
+`dep_visto_vivo` é o guarda Tobin a ver a vitrine fechar. Nenhum número **[MOTOR]**
+mudou; a KB alinhou-se ao que o código já fazia.
 
 **A convergência (interseção):** cada indicador é uma faixa; a Janela da Morte é a
 sobreposição de todas. Quanto mais sinais colhidos a tempo, mais estreita — mas um só
@@ -137,8 +152,9 @@ sinal já a deixa aberta. Sinais degradados não a estreitam; também não a cor
   `livor_mortis`, `algor_mortis`, `ipm_convergencia`) deve refletir exatamente esta
   cronologia — é a referência que o jogador consulta para deduzir sozinho.
 - A distinção **durável × perecível** é a espinha do relógio mole (§10 do contexto): o
-  livor e o "visto com vida" resolvem sempre; o rigor e o algor são atalhos que
-  degradam perdendo precisão, nunca valor.
+  "visto com vida" e a rotina interrompida resolvem sempre (com o livor fixo de teto
+  largo atrás deles); o rigor e o algor são atalhos que degradam perdendo precisão,
+  nunca valor.
 - A prosa das cartas do corpo (`ev_rigor`, `ev_livores`) descreve o **estado
   observável** (dureza, cor, resposta à pressão) sem enunciar a janela — quem converte
   estado em horas é o modelo, e quem fala a leitura ao jogador é o mestre (dica), nunca

@@ -27,7 +27,16 @@ export const CARTAS = [
       {
         ipmAte: 24,
         textoDisplay: 'Corpo Endurecido',
-        carimboPadrao: 'Rígido por inteiro; extremidades começando a ceder',
+        // OS-S2 (Frente B, decisão do usuário 27/07/2026): o carimbo antigo
+        // («extremidades começando a ceder») casava com a formulação que o
+        // verbete do glossário mapeia à faixa de 24–36 h — e a carta está na
+        // de 12–24 h. Quem cruzava carimbo com verbete deslocava o corpo uma
+        // faixa inteira. O carimbo novo diz a folga pontual sob pressão (rigor
+        // AINDA PLENO) em frase nominal — regra do guia §5 — e sem repetir a
+        // descricao, que a Ficha imprime na mesma tela. Verbete intocado.
+        // String espelhada no contrato do qa-ui.mjs — atualizado no mesmo
+        // commit.
+        carimboPadrao: 'Rígido por inteiro; dedos e mandíbula com leve folga à pressão firme',
         descricao:
           'Maxilar, pescoço e membros não cedem quando se tenta dobrá-los: o corpo enrijeceu por inteiro. Nos dedos e na mandíbula, porém, a resistência cede um ponto sob pressão firme.',
         vozMestre: 'Rígido por inteiro, mas repare nas mãos e na mandíbula: já cedem um ponto. Dezesseis horas, talvez dezoito; não menos de doze. Perto disto, o termômetro mente por omissão: cruze com o rigor antes de cravar a faixa.',
