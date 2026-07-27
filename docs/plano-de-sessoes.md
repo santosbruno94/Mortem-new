@@ -56,19 +56,24 @@ A ordem parte da sequência registrada em `pendencias-status.md` ("rodar o playt
 diálogo *ou* solubilidade → UI/arte por último") e das observações de triagem do relatório
 de playtest (itens que se cruzam decidem-se juntos).
 
-### PRÓXIMA — OS-S2, «O mundo que não responde» *(escrita e engatilhada)*
+### EM CURSO — OS-S2, «O mundo que não responde» *(aberta em 27/07/2026)*
 
-- **Prompt de arranque pronto:** [`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md).
-  Copiar o §1 como primeira mensagem da sessão nova.
+- **Prompt de arranque:** [`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md).
 - **Frente A — as interferências que não se leem.** A quarta pendência da OS-S1, hoje
   respondida: o mecanismo funciona inteiro e o jogador não o lê. Diagnóstico fechado, três
   causas localizadas no código. **Para e propõe antes de construir** — mexe na dosagem que
-  a OS-S1 martelou.
+  a OS-S1 martelou. **Proposta apresentada ao usuário; aguarda decisão.**
 - **Frente B — o carimbo de `ev_rigor` que mente ao metódico**, mais duas derivas da KB.
-  **Decisão do usuário** por regra do `CLAUDE.md` (divergência KB × motor).
-- **Frente C — o mundo que não reconhece o gesto:** os dois gestos do corpo que sobraram
-  (relógio e termômetro) e a cela que se desenha como gabinete. **Executável de arranque**,
-  já tem ordem.
+  **Decisão do usuário** por regra do `CLAUDE.md` (divergência KB × motor). **Opções
+  apresentadas; aguarda decisão.**
+- **✅ Frente C — o mundo que não reconhece o gesto (27/07/2026).** C-1: os dois gestos
+  que sobravam ganharam estado pelo mesmo campo do livor — o relógio deixa de estar «de
+  tampa fechada, mudo» depois da corda, o termômetro deixa de «ficar à mão» depois da
+  medição (pares `semCartas`/`requerCartas` no sub-local `corpo`; prosa nova pelo
+  `redigir-prosa`). C-2: a cela deixou de se desenhar como gabinete — `tipoCenaDe` resolve
+  o grupo `posto` para a cena do posto (uma linha, apresentação pura). Pipeline
+  `revisar-prosa` em primeiro plano, zero bloqueantes (dois altos do editor corrigidos:
+  repetição de camada com a carta e eco de fecho); `npm run verificar` verde.
 - **Fora da OS, por decisão registrada:** os anéis do Ato I/II (custo alto, sem evidência
   de necessidade), o relógio do inquérito (esperar o playtest a 51 cartas) e a OS «Reação
   Vital Condicionante».
