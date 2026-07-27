@@ -124,8 +124,24 @@ simplesmente não foi arrumada por ninguém, e inventar-lhe gestos seria mentir 
 **vestígio durável do instrumento lavado**, que faz a peça deixar de expirar: quem chega
 tarde já não acha a junta úmida, mas o coágulo sob a virola continua lá.
 
+O **playtest cego de 27/07/2026** achou um defeito que nenhuma bateria automática podia
+achar, porque não quebrava nada: **as cartas que nascem dentro de um diálogo perdiam-se em
+silêncio ao descer a árvore**. São 13 das 50 cartas do caso — os seis paradeiros declarados
+entre elas —, e a carta e o botão que a destruía dividiam a mesma tela. O Painel de Álibis
+ficava vazio a partida inteira, o monólogo cobrava juízos «sem paradeiro colhido» pela mesma
+razão, e o juízo «Inocente» sobre os inocentes-com-segredo ficava **impossível de fundar**:
+a ligação que o sustenta tem a carta de álibi como uma das pontas. O jogador foi cobrado por
+um método que o defeito lhe negara. Agora **o que o interrogado declarou fica escrito** — a
+conversa continua a descer e a não voltar, mas o dito não se desdiz —, a pergunta de
+confronto vem **travada e legível** enquanto o paradeiro não estiver na mesa, o gesto de
+voltar o corpo **vira a prancha** e é reconhecido pela cena, a cela deixa de cobrar hora de
+corredor, e a Estação V ganhou uma **voz do mestre** que diz o que funda um juízo sem
+entregar nada do caso.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
-o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
+o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md), e a
+frente seguinte já está escrita e medida em
+[`docs/os-s2-prompt-de-arranque.md`](./docs/os-s2-prompt-de-arranque.md).
 
 ## Documentação
 
@@ -136,6 +152,9 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/nota-gabinete-ilustrado.md`](./docs/nota-gabinete-ilustrado.md) | Pivô de apresentação (visual novel de gravura): a Prancha do corpo e a Cena de diálogo |
 | [`docs/sistema-visual.md`](./docs/sistema-visual.md) | Sistema visual da interface: paleta token a token, cardápio tipográfico, catálogo da matéria, legenda das tintas de carimbo e as divergências deliberadas do desenho |
 | [`docs/pendencias-status.md`](./docs/pendencias-status.md) | Mapa vivo do que ainda falta (o que foi feito, o que fica para sessão própria) |
+| [`docs/plano-de-sessoes.md`](./docs/plano-de-sessoes.md) | Rota de trabalho entre sessões: ordem, escopo e critério de pronto de cada frente |
+| [`docs/os-s2-prompt-de-arranque.md`](./docs/os-s2-prompt-de-arranque.md) | Prompt de arranque da frente seguinte (**OS-S2 — O mundo que não responde**), já medida e engatilhada |
+| [`docs/playtest/`](./docs/playtest/) | Relatórios de playtest versionados verbatim, com índice — só consulta, não normativos |
 | [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md) | Plano contra a genericidade espacial dos casos procedurais (etapas E1-E6; prompts de implementação em [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md)) |
 | [`docs/os-prosa-viva-e0-plano.md`](./docs/os-prosa-viva-e0-plano.md) | Plano contra a genericidade **textual** dos casos procedurais — sequência da Vila Viva (Fase 0 de telemetria + etapas E1-E5; prompts de implementação em [`docs/os-prosa-viva-prompts-implementacao.md`](./docs/os-prosa-viva-prompts-implementacao.md)) |
 | [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) | Norma de toda a prosa (língua de época, observação pura, anti-padrões) |
@@ -209,7 +228,12 @@ auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:bat
    dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
    da localidade + sprite do interlocutor), com **confronto** (pousar uma prova diante do
    suspeito) e **exigir que mostre** (mandar mostrar as mãos, os antebraços ou as botas —
-   quando o corpo da vítima anuncia a marca-espelho). **Termos em negrito** na prosa extraem
+   quando o corpo da vítima anuncia a marca-espelho). A conversa **desce e não volta** — cada
+   pergunta escolhida descarta as outras —, mas **o que ele declarou fica escrito**: o termo
+   da conversa guarda as respostas anteriores, com a pergunta que as provocou, e os termos
+   ainda não anotados continuam ao alcance da mão. Confrontar com uma prova que desmente uma
+   noite **só se abre depois de o interrogado ter dado a noite dele**: primeiro toma-se o
+   termo, depois se lhe põe a prova diante dos olhos. **Termos em negrito** na prosa extraem
    cartas para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
    corpo (uma dica; o Dr. Abbot, ausente, recordado pelo aprendiz). O perecível (rigor,
    temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.

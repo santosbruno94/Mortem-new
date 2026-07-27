@@ -193,7 +193,13 @@ apresentação migrou para o registro de **visual novel de gravura**. O exame do
 deixou de ser cadáver 3D e passou a ser **A Prancha** — figura de atlas de medicina legal
 em SVG procedural (`PranchaCorpo.jsx`: lente que segue o ponteiro, frente/dorso e camada
 de necropsia; pose/livor pelo IPM; hotspots que extraem as MESMAS cartas dos termos em
-negrito, via `hotspots_corpo.js`). Diálogos e localidades compõem **A Cena** ilustrada
+negrito, via `hotspots_corpo.js`). **O gesto vira a prancha (playtest de 27/07/2026):**
+voltar o corpo é o gesto que expõe o dorso, e quando a carta do livor entra na mesa a
+prancha passa à **Fig. 2** sozinha — só na transição, só com o **exame externo** em tela
+(com a necropsia aberta a viragem correria invisível), e virar a folha de volta continua
+sendo do jogador. A cena acompanha: os dois estados («o homem de guarda espera a ordem» ×
+«voltado o corpo e tornado a pousar como estava») alternam-se pelo campo
+**`semCartas`** — espelho de `requerCartas`, lido em `EventoLocalidade.jsx`. Diálogos e localidades compõem **A Cena** ilustrada
 (`CenaDialogo.jsx`/`FundoCena.jsx`: fundo 2D paramétrico por localidade + sprite meio-corpo
 do genótipo de aparência, com "gravura que respira" e reação observável). Tudo procedural —
 o placeholder É o fallback (slots `prancha_corpo`/`fundo_cena` prontos para arte externa
@@ -316,6 +322,16 @@ declaram sub-locais e jogam idêntico. Uma localidade que se divide declara
 sub-local corrente vive em `subLocalAtual` no store — dado de UI, que nem o veredicto nem
 a acusação leem. O nó de chegada do perito sai do pacote (`parametrosCena.noChegada`): o
 caso-escola chega à `relojoaria`; os gerados, ao seu nó `cena`.
+
+**Prédio é grupo, e grupo custa 0h entre os seus nós.** `src/data/mapa.js` declara quatro
+grupos — `relojoaria` (a loja + a saleta de Silas), **`posto`** (a sala da frente + a cela
+dos fundos), `vila` e `fora` —, e a matriz de custos é de 16 pares, completa e simétrica.
+O grupo `posto` nasceu do playtest cego de 27/07/2026: a cela cobrava **1h** para se
+alcançar de dentro do próprio posto, o mesmo que atravessar a vila até a estalagem. O
+custo do relógio é **deslocamento**, e atravessar um corredor não é deslocamento — a
+ficção já o dizia (`interferencias.js`: «o corredor da cela é o mesmo do posto»). A cela
+passou ao grupo do posto pelo precedente que a saleta já abrira: **nó próprio, mesmo
+prédio, custo 0 entre os dois**. Foi a única célula da matriz alterada.
 
 Os nós do **mesmo prédio** (grupo `relojoaria` de `src/data/mapa.js`) ganham uma **planta
 baixa** que permite **andar entre cômodos** sem tocar o motor. Ao abrir a relojoaria ou a
@@ -579,7 +595,25 @@ Cada *beat* (rodada) oferece **quatro falas do perito**, cada uma num **tom**: f
 tom **avança** e **descarta os irmãos** — não há "outro assunto", não se volta ao hub. O
 nó corrente **persiste** no store (`noAtualDialogo` por suspeito, dado puro que o motor
 jamais lê): reabrir retoma onde parou, e **a escolha é definitiva**. Navegar não custa
-tempo (relógio mole). O NPC responde no registro perguntado; a **carta de sustentação**
+tempo (relógio mole).
+
+**O termo da conversa (playtest cego de 27/07/2026).** Descer não apaga mais o que já foi
+dito. Até essa data a fala do beat anterior saía da tela ao escolher a pergunta seguinte,
+e com ela o **termo em negrito ainda não colhido**: como **13 das 50 cartas do caso**
+nascem dentro de diálogo — os **seis paradeiros declarados** entre elas —, a carta e o
+botão que a destruía dividiam a mesma tela, sem segunda chance e sem aviso. O Painel de
+Álibis ficava inerte a partida inteira, e o juízo «Inocente» sobre os
+inocentes-com-segredo tornava-se **infazível por consequência** (a ligação que o funda
+tem a carta de álibi como uma das pontas). Agora o que o interrogado declarou fica
+**escrito acima da fala corrente**, mais apagado, com a pergunta que o perito fez antes de
+cada resposta reconstruída da árvore; os termos por colher continuam clicáveis no
+registro. **A conversa continua a descer e a não voltar** — a escolha segue definitiva; o
+que deixa de acontecer é o dito se desdizer. Rodapé avisa quando há coisa dita e não
+anotada. A `alfinetada` e o `degrau` **ficam de fora do registro**, e por razão dura: os
+dois são função da mesa no instante do render, e reimprimi-los num beat passado mostraria
+o que diriam *agora* — inventaria um passado que o jogador não viveu. Marcação:
+`data-fala-registrada` no registro; `data-no-dialogo` continua marcando **só** a fala
+corrente, para os seletores do `qa-ui.mjs` casarem um nó por vez. O NPC responde no registro perguntado; a **carta de sustentação**
 de cada beat sai em **qualquer** tom (o caso é **sempre acusável** — solubilidade), mas
 o **tom ressonante** de cada personagem rende um tento a mais de prosa (a lasca na
 bainha de Silas só se apanha de esguelha, no oblíquo). O peso da escolha é **narrativo
@@ -678,7 +712,20 @@ reação é **observável, nunca confissão** — o veredicto continua no mural.
 próprio paradeiro (função pura `ligacaoDeConfrontoEmCena` em `src/logic/acusacao.js` —
 só tags: vestígio `pertenceA` ou corroboração `ligadoA` × álibi `declaranteId`) cria a
 **mesma ligação `refuta_alibi` do barbante**, que nasce **visível e removível** no
-mural; os juízos seguem 100% manuais (ver §8). No vertical slice, Silas Crane (o réu)
+mural; os juízos seguem 100% manuais (ver §8).
+
+**A ordem do ofício: primeiro o termo, depois a prova (playtest de 27/07/2026).** A
+pergunta de confronto que desmentiria um paradeiro **ainda não declarado** vem **travada e
+legível** — a razão vai escrita no próprio botão («Tome-lhe primeiro o paradeiro: prova
+que desmente uma noite só se põe diante de quem já disse onde a passou»), e a trava cai
+assim que o álibi entra na mesa. Antes o jogo avisava *depois* que nada se anotaria e
+rodava a cena assim mesmo: o interrogado confessava a mentira e, perguntado em seguida
+pelo paradeiro, **reapresentava a mentira que já confessara**. O aviso passou do depois
+para o antes, que é onde serve. Predicado puro `confrontoSemParadeiro` em
+`src/logic/acusacao.js` (só tags); alcança **6 confrontos em 4 suspeitos** no caso-escola
+e **não fecha nenhum gatilho de interferência** — `corrida_a_torre` e `silenciar_herrick`
+disparam por `prova_apresentada` sem carta fixa, e sobram 4 confrontos livres em Silas e 2
+em Herrick mesmo com a mesa sem álibi nenhum. No vertical slice, Silas Crane (o réu)
 tem três reações: o registro da estalagem (`corrob_estalajadeiro`), o livro de ordens
 (`ev_livro_ordens`) e a lasca na bainha (`ev_vidro_dobra`), cada uma reenquadrada por
 ele com a calma da bancada — e a evasiva que devolve nada.
@@ -835,6 +882,17 @@ selecionado").
 **A cadeia** soma: Quem · Quando · Como · Presença · Depoimentos contestados · Motivo ·
 Juízo sobre cada não-acusado (`culpado` | `inocente` | `sem_juizo`). A armadilha do
 §2: quebrar a mentira do inocente e julgá-lo *culpado* → **Erro Judiciário**.
+
+**A lição do juízo, na Estação V (playtest de 27/07/2026).** O desfecho cobrava um
+critério que a tela nunca enunciava: as três opções estavam ali, o monólogo dizia depois
+que o «Inocente» não correspondia ao que as cartas provam, e em lugar nenhum se dizia **o
+que funda um juízo**. A punição era justa; a pedagogia, não. A Estação V ganhou uma **voz
+do mestre** — **tutorial só** (`modoDoCaso(casoId) === 'tutorial'`, mesma convenção de
+`FalaDoLegista.jsx`; nos gerados não há mestre a ecoar) — que diz a **regra do
+instrumento** e nada do caso: nenhum nome, nenhuma carta, nenhuma resposta. **Não reabre
+a porta que a Q3 fechou**: o que a Q3 tirou do mural foi o *gabarito* (a leitura pronta do
+legista pendurada no topo), não o *critério*. E o painel de um suspeito **sem paradeiro na
+mesa** deixou de listar cartas e engolir o clique: nomeia o que falta e onde se colhe.
 
 **Nexo de Presença:** o vestígio **instrumental** (casa com a arma E pertence ao réu) é
 obrigatório para o nexo; ligar um traço de terceiro é **gafe** (condena, mas custa a
