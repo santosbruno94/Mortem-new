@@ -1466,7 +1466,10 @@ src/
                 aparencias.js (genótipo curado) · mapa_espacial.js (diorama) ·
                 hotspots_corpo.js (exame 3D) — os três últimos: camada VISUAL ·
                 procedencia.js (o `apontadaPor` da D17: quem pôs a alegação em
-                circulação — camada NARRATIVA, fora de tagsOcultas de propósito)
+                circulação — camada NARRATIVA, fora de tagsOcultas de propósito) ·
+                interferencias.js (OS-S1: os três degraus do oficial durante o
+                inquérito e os ecos pós-caso — o campo `interferencias` do pacote,
+                que até aqui só os casos gerados traziam)
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
                 monologo.js · epilogo.js · tempo.js · interpolar.js ·
