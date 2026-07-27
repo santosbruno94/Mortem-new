@@ -47,6 +47,12 @@ const CLASSE_FALA = 'font-serif text-stone-300 leading-loose';
 // é a única diferença que importa (playtest cego de 27/07/2026, item 1).
 const CLASSE_FALA_REGISTRADA = 'font-serif text-stone-400/90 leading-loose text-[0.94em]';
 
+// Número por extenso dentro de período corrido: os contadores do jogo usam
+// algarismo porque SÃO contadores («3 de 8 observações»), mas em frase de prosa
+// o repositório escreve por extenso («doze anos», «duas libras e dois xelins»).
+// Acima de seis o algarismo volta — não há tela que chegue lá.
+const POR_EXTENSO = ['', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis'];
+
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
@@ -384,8 +390,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
                   )}
                   {c.travado && (
                     <span className="block mt-1 text-stone-400 italic text-[0.8rem] leading-snug">
-                      Tome-lhe primeiro o paradeiro: prova que desmente uma noite só se põe diante
-                      de quem já disse onde a passou.
+                      Tome-lhe primeiro o paradeiro: ainda não declarou onde passou a noite.
                     </span>
                   )}
                 </span>
@@ -451,16 +456,20 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       {porColher > 0 && (
         <p className="mt-5 text-amber-300/70 text-xs italic font-serif tracking-wide" data-por-colher={porColher}>
           {porColher === 1
-            ? 'Há uma coisa dita e ainda não anotada: o termo em negrito só vai para a mesa quando se clica nele.'
-            : `Há ${porColher} coisas ditas e ainda não anotadas: o termo em negrito só vai para a mesa quando se clica nele.`}
+            ? 'Ficou um termo por anotar: em negrito na fala, vai para a mesa só quando se clica nele.'
+            : `Ficaram ${POR_EXTENSO[porColher] || porColher} termos por anotar: em negrito na fala, vão para a mesa só quando se clica neles.`}
         </p>
       )}
 
+      {/* O rodapé permanente dizia «e o que ficou por anotar continua ao
+          alcance da mão», que é palavra por palavra o aviso contingente logo
+          acima — mesma tela, mesma camada, mesma informação. Fica o aviso, que
+          é o que traz a contagem; sai a duplicata (e com ela o travessão da
+          fórmula «não X — mas Y»). Pipeline `revisar-prosa` de 27/07/2026. */}
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">
-        A conversa desce e não volta: cada pergunta escolhida descarta as outras — mas o que ele já
-        disse fica escrito, e o que ficou por anotar continua ao alcance da mão. Confrontar com uma
-        prova só se abre quando ela está na mesa, e não gasta a vez. Interrogar não custa tempo; o
-        relógio só corre quando você viaja.
+        A conversa desce e não volta: cada pergunta escolhida descarta as outras, mas o que ele já
+        disse fica escrito. Confrontar com uma prova só se abre quando ela está na mesa, e não gasta
+        a vez. Interrogar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </Overlay>
   );

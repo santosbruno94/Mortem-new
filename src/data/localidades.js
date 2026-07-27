@@ -49,7 +49,14 @@ export const LOCALIDADES = [
         ],
         prosa: [
           'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O guarda Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
-          'Ao primeiro exame do tronco e dos membros, [[ev_rigor]].',
+          // Ordem CÉFALO-CAUDAL (regra de Nysten; `kb-medicina-legal/tanatologia.md`
+          // §2 e o protocolo de campo §3.2): o rigor instala-se e desfaz-se da
+          // mandíbula para as extremidades, e é por isso que se começa por ela.
+          // A frase anunciava «tronco e membros» — abria o exame onde o sinal
+          // chega por último e omitia a região de onde a carta tira o achado
+          // que importa («nos dedos e na mandíbula, a resistência cede um
+          // ponto»). As três regiões agora são as três que a carta reporta.
+          'Ao primeiro exame do maxilar, do pescoço e dos membros, [[ev_rigor]].',
           'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
           'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
         ],
@@ -67,7 +74,14 @@ export const LOCALIDADES = [
           {
             requerCartas: ['ev_livores'],
             paragrafos: [
-              'Voltado o corpo e tornado a pousar como estava, o homem de guarda recua para junto da porta. O pó do assoalho ficou revolvido no vão que os ombros ocupavam.',
+              // Três consertos do pipeline de 27/07/2026, na mesma frase: o pó
+              // revolvido «no vão que os ombros ocupavam» ficaria DEBAIXO do
+              // corpo reposto, invisível a quem olha depois (perito-forense e
+              // editor-crítico, independentes); «tornado a pousar» não se
+              // sustenta — a perífrase `tornar a` + infinitivo não passiva; e
+              // o pretérito destoava do presente em que toda a cena do corpo
+              // está («jaz», «abre-se», «mostram-se», «pende»).
+              'Voltado o corpo e posto outra vez como estava, o homem de guarda recua para junto da porta. Em volta dos ombros, o pó do assoalho está revolvido.',
             ],
           },
         ],
