@@ -42,11 +42,16 @@ const MARCA_TOM = { firme: '‹', cordial: '◦', tecnico: '▪', obliquo: '~' }
 // fala — e fala em bloco fechado cansa antes de acabar. A prosa das
 // localidades fica como está; quem muda é o interrogatório.
 const CLASSE_FALA = 'font-serif text-stone-300 leading-loose';
+// O que já se disse fica escrito, e escrito lê-se mais apagado que o que se
+// diz agora — mas lê-se. O termo por colher continua clicável no registro:
+// é a única diferença que importa (playtest cego de 27/07/2026, item 1).
+const CLASSE_FALA_REGISTRADA = 'font-serif text-stone-400/90 leading-loose text-[0.94em]';
 
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const noAtualDialogo = useJogo((s) => s.noAtualDialogo);
+  const nosVisitadosDialogo = useJogo((s) => s.nosVisitadosDialogo);
   const definirNoDialogo = useJogo((s) => s.definirNoDialogo);
   const visitarNoDialogo = useJogo((s) => s.visitarNoDialogo);
   const provasApresentadas = useJogo((s) => s.provasApresentadas);
@@ -60,9 +65,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // estado local e "retomar" a descarta. O beat corrente vem do store.
   const [reacaoAtual, setReacaoAtual] = useState(null);
   const [cartaApresentada, setCartaApresentada] = useState(null);
-  // Aviso quando a prova DESMENTIRIA o paradeiro, mas o interrogado ainda
-  // não o declarou — a reação joga, mas nenhuma ligação nasce no mural.
-  const [semParadeiro, setSemParadeiro] = useState(false);
   if (!dialogo || (localidadeId && !localidade)) return null;
   const titulo = localidade ? localidade.titulo : dialogo.titulo;
   const subtitulo = localidade ? localidade.subtitulo : dialogo.subtitulo;
@@ -79,6 +81,61 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // Os nós de reação/evasiva não são posição de conversa: são resposta a uma
   // prova. Nunca persistem como beat, e neles a conversa "retoma".
   const emReacao = !!reacaoAtual;
+
+  // ---------------------------------------------------------------------
+  // O TERMO DA CONVERSA (playtest cego de 27/07/2026, item 1).
+  //
+  // A descida sem volta apagava o beat anterior da tela, e com ele o termo em
+  // negrito que ainda não se tinha colhido: 13 das 50 cartas do caso nascem
+  // dentro de diálogo, e todas se perdiam em silêncio ao escolher a pergunta
+  // seguinte — a carta e o botão que a destruía dividiam a mesma tela. A
+  // conversa continua a DESCER e a não voltar (a escolha segue definitiva);
+  // o que deixa de acontecer é o dito se desdizer. O que ele já declarou fica
+  // escrito, como num termo tomado a escrito, e o termo por colher continua
+  // ao alcance da mão.
+  //
+  // A trilha sai do store (`nosVisitadosDialogo`, na ordem em que se desceu),
+  // com o nó de abertura à frente — `visitarNoDialogo` só regista o DESTINO
+  // de cada escolha, e a abertura não é destino de nenhuma.
+  //
+  // Reações de confronto NÃO entram no termo: são canal lateral transitório
+  // por desenho, e o botão que as produz continua à mão (reapresentar a prova
+  // devolve a mesma cena). O que entra é a fala dos beats — e é só nela que
+  // vivem os 49 marcadores [[id]] do caso.
+  const trilha = [dialogo.noInicial, ...(nosVisitadosDialogo[suspeitoId] || [])];
+  // Em reação, o beat corrente também já é passado: quem ocupa a tela é a
+  // cena da prova. Fora dela, o último da trilha É a tela — e não se repete.
+  const registro = emReacao ? trilha : trilha.slice(0, -1);
+  // A pergunta que levou a cada resposta, reconstruída da árvore: a opção do
+  // nó anterior que aponta para este. O rótulo variável (`rotuloVars`) usa a
+  // MESMA chave determinística da renderização, para o termo repetir palavra
+  // por palavra a pergunta que o perito de fato fez.
+  const perguntaQueLevouA = (indice) => {
+    if (indice <= 0) return null;
+    const anterior = dialogo.nos[trilha[indice - 1]];
+    if (!anterior) return null;
+    const i = (anterior.opcoes || []).findIndex((op) => op.vaiPara === trilha[indice]);
+    if (i < 0) return null;
+    const op = anterior.opcoes[i];
+    const base = op.rotuloVars
+      ? escolherDeterministico(op.rotuloVars, `${detective.surname || ''}|${suspeitoId}|${trilha[indice - 1]}|${i}`)
+      : op.rotulo;
+    return interpolar(base, detective);
+  };
+  // Quantos termos em negrito estão em tela sem ter ido para a mesa. Serve
+  // só ao aviso de rodapé — o motor não lê isto, e nada trava por causa dele:
+  // o perito segue livre para não anotar o que ouviu, desde que saiba que não
+  // anotou.
+  const idsEmTela = [
+    ...new Set(
+      [...registro, noExibido]
+        .map((id) => dialogo.nos[id])
+        .filter(Boolean)
+        .flatMap((n) => n.fala)
+        .flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
+    ),
+  ];
+  const porColher = idsEmTela.filter((id) => !temCarta(id)).length;
 
   // EXPOSIÇÃO (OS-R6, G5): quanto do dossiê daquele suspeito o perito trouxe
   // para a sala. É função pura das cartas na mesa — o nível não abre nem
@@ -103,7 +160,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const irPara = (destino) => {
     setReacaoAtual(null);
     setCartaApresentada(null);
-    setSemParadeiro(false);
     definirNoDialogo(suspeitoId, destino);
     visitarNoDialogo(suspeitoId, destino);
   };
@@ -114,10 +170,14 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // uma entrada de `confrontos` (portanto tem reação em `reacoesProva`); o
   // `|| noEvasiva` fica só como fallback defensivo.
   const apresentar = (carta) => {
-    // Detecta o no-op de mural ANTES de apresentar (o estado da mesa é o
-    // mesmo): a prova toca o paradeiro do interrogado, mas o álibi dele
-    // ainda não foi declarado — a reação joga, porém nada se anota.
-    setSemParadeiro(confrontoSemParadeiro(carta, suspeitoId, cartasRegistradas));
+    // Guarda de ordem (playtest cego de 27/07/2026, item 2): a prova que
+    // desmente um paradeiro NÃO DECLARADO não se põe diante dos olhos de
+    // ninguém — a pergunta fica travada até ele dar a noite dele. Antes o
+    // jogo avisava que nada se anotaria e rodava a cena assim mesmo: o
+    // interrogado confessava a mentira e, perguntado depois do paradeiro,
+    // reapresentava a mentira já confessada. O aviso passou do depois para o
+    // antes, que é onde ele serve para alguma coisa.
+    if (confrontoSemParadeiro(carta, suspeitoId, cartasRegistradas)) return;
     apresentarProva(suspeitoId, carta.id);
     const destino = (dialogo.reacoesProva || {})[carta.id] || dialogo.noEvasiva;
     setReacaoAtual(destino);
@@ -127,7 +187,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const retomarConversa = () => {
     setReacaoAtual(null);
     setCartaApresentada(null);
-    setSemParadeiro(false);
   };
 
   // O gatilho de complexo (OS `os-flags-psiquicas-no-dialogo.md`): a pergunta
@@ -136,14 +195,12 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // "retomar" descarta; nada se anota ao mural, nada persiste no store (o
   // motor é cego a isto). Só existe nos diálogos gerados que o trazem.
   const desmontar = (destino) => {
-    setSemParadeiro(false);
     setCartaApresentada(null);
     setReacaoAtual(destino);
   };
 
   const exigir = (regiao, destino) => {
     exigirQueMostre(suspeitoId, regiao);
-    setSemParadeiro(false);
     setCartaApresentada(null);
     setReacaoAtual(destino);
   };
@@ -164,9 +221,21 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
 
   // A caixa de confronto (gated): só as perguntas cujas provas estão na mesa.
   // Fora da reação; canal lateral, sempre à mão enquanto houver o que confrontar.
+  // A pergunta que desmente um paradeiro ainda não declarado vem TRAVADA (e
+  // não escondida): quem a lê aprende a ordem do ofício — primeiro toma-se o
+  // termo, depois se lhe põe a prova diante dos olhos.
   const confrontosVisiveis = emReacao
     ? []
-    : (dialogo.confrontos || []).filter((c) => temCarta(c.requerCarta));
+    : (dialogo.confrontos || [])
+        .filter((c) => temCarta(c.requerCarta))
+        .map((c) => ({
+          ...c,
+          carta: cartasRegistradas.find((k) => k.id === c.requerCarta),
+        }))
+        .map((c) => ({
+          ...c,
+          travado: confrontoSemParadeiro(c.carta, suspeitoId, cartasRegistradas),
+        }));
 
   // O gatilho é canal lateral sem carta: à mão fora da reação, some durante.
   const gatilhosVisiveis = emReacao ? [] : dialogo.gatilhos || [];
@@ -199,16 +268,34 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
         </p>
       )}
 
-      {/* Confronto de paradeiro sem paradeiro declarado: a prova o desmentiria,
-          mas ele ainda não deu a sua noite — nada se anota ao mural. */}
-      {semParadeiro && (
-        <p className="mb-3 text-amber-300/80 text-xs italic font-serif" data-sem-paradeiro>
-          Ainda não há paradeiro declarado para confrontar: pergunte-lhe a noite de
-          sexta antes de lhe pôr isto diante dos olhos.
-        </p>
+      {/* O TERMO DA CONVERSA: o que ele já declarou, na ordem em que o
+          declarou, com a pergunta que o perito fez antes de cada resposta.
+          Os termos em negrito que ficaram por colher continuam clicáveis
+          aqui — descer a árvore deixa de apagar a prova. */}
+      {registro.length > 0 && (
+        <div className="registro-conversa space-y-4 mb-6" data-registro-conversa>
+          {registro.map((noId, indice) => {
+            const noPassado = dialogo.nos[noId];
+            if (!noPassado) return null;
+            const pergunta = perguntaQueLevouA(indice);
+            return (
+              <div key={noId} data-fala-registrada={noId} className="space-y-3">
+                {pergunta && <p className="pergunta-registrada">{pergunta}</p>}
+                {noPassado.fala.map((t, i) => (
+                  <ParagrafoProsa key={`${noId}_${i}`} texto={t} className={CLASSE_FALA_REGISTRADA} />
+                ))}
+              </div>
+            );
+          })}
+        </div>
       )}
 
       {/* A fala corrente do suspeito (com os termos extraíveis) */}
+      {!emReacao && perguntaQueLevouA(trilha.length - 1) && (
+        <p className="pergunta-registrada pergunta-registrada--corrente">
+          {perguntaQueLevouA(trilha.length - 1)}
+        </p>
+      )}
       <div data-no-dialogo={noExibido} data-exposicao={exposicao.nivel} className="space-y-5">
         {no.fala.map((t, i) => (
           <ParagrafoProsa key={`${noExibido}_${i}`} texto={t} className={CLASSE_FALA} />
@@ -281,16 +368,26 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
               <button
                 key={c.requerCarta}
                 type="button"
-                className="opcao-dialogo opcao-dialogo--confronto"
+                className={`opcao-dialogo opcao-dialogo--confronto ${c.travado ? 'opcao-dialogo--travado' : ''}`}
                 data-requer-carta={c.requerCarta}
-                onClick={() => apresentar(cartasRegistradas.find((k) => k.id === c.requerCarta))}
+                data-travado={c.travado ? '' : undefined}
+                disabled={c.travado}
+                onClick={() => apresentar(c.carta)}
               >
                 <span className="opcao-marca" aria-hidden>
                   ❦
                 </span>
                 <span className="opcao-rotulo-texto">
                   {interpolar(c.rotulo, detective)}
-                  {jaApresentada && <span className="text-stone-500 italic"> · já apresentada</span>}
+                  {jaApresentada && !c.travado && (
+                    <span className="text-stone-500 italic"> · já apresentada</span>
+                  )}
+                  {c.travado && (
+                    <span className="block mt-1 text-stone-400 italic text-[0.8rem] leading-snug">
+                      Tome-lhe primeiro o paradeiro: prova que desmente uma noite só se põe diante
+                      de quem já disse onde a passou.
+                    </span>
+                  )}
                 </span>
               </button>
             );
@@ -351,8 +448,17 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
         </p>
       )}
 
+      {porColher > 0 && (
+        <p className="mt-5 text-amber-300/70 text-xs italic font-serif tracking-wide" data-por-colher={porColher}>
+          {porColher === 1
+            ? 'Há uma coisa dita e ainda não anotada: o termo em negrito só vai para a mesa quando se clica nele.'
+            : `Há ${porColher} coisas ditas e ainda não anotadas: o termo em negrito só vai para a mesa quando se clica nele.`}
+        </p>
+      )}
+
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">
-        A conversa desce e não volta: cada pergunta escolhida descarta as outras. Confrontar com uma
+        A conversa desce e não volta: cada pergunta escolhida descarta as outras — mas o que ele já
+        disse fica escrito, e o que ficou por anotar continua ao alcance da mão. Confrontar com uma
         prova só se abre quando ela está na mesa, e não gasta a vez. Interrogar não custa tempo; o
         relógio só corre quando você viaja.
       </p>

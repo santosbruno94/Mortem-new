@@ -83,6 +83,21 @@ export default function PranchaCorpo({ ipm }) {
   const [face, setFace] = useState('frente'); // 'frente' (Fig.1) | 'dorso' (Fig.2)
   const vista = camada === 'necropsia' ? 'necropsia' : face;
 
+  // O GESTO VIRA A PRANCHA (playtest cego de 27/07/2026, item 4). Voltar o
+  // corpo é o gesto que expõe o dorso; a prancha ficava na face anterior, e o
+  // livor dorsal — a 8ª observação do exame — só se alcançava caçando um
+  // hotspot pequeno na figura ou o outro botão, o de virar a folha. Quando a
+  // carta do livor entra na mesa, a prancha passa à Fig. 2 sozinha: o perito
+  // voltou o corpo, e o atlas mostra o lado que ele acabou de descobrir.
+  // Só na TRANSIÇÃO — reabrir o exame com o livor já colhido não força a face,
+  // e virar a folha de volta continua sendo do jogador.
+  const tinhaLivores = useRef(cartasRegistradas.some((c) => c.id === 'ev_livores'));
+  const temLivores = cartasRegistradas.some((c) => c.id === 'ev_livores');
+  useEffect(() => {
+    if (temLivores && !tinhaLivores.current) setFace('dorso');
+    tinhaLivores.current = temLivores;
+  }, [temLivores]);
+
   const aparencia = obterAparencia('vitima');
   const f = aparencia.corpo === 'sobrepeso' ? 1.22 : aparencia.corpo === 'magro' ? 0.86 : 1;
   const pele = CORES_PELE[aparencia.pele] || CORES_PELE.palida;

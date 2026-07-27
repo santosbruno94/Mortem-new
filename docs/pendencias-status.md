@@ -1,7 +1,7 @@
 # MORTEM — Status das Pendências (o que falta)
 
-**Atualizado em:** 26 de julho de 2026 (fecho da OS-R8: itens 11 e 14 fechados, item 10
-re-roteado para lote de UI)
+**Atualizado em:** 27 de julho de 2026 (triagem do playtest cego de 27/07 — 5 dos 7 itens
+consertados; ver a seção no fim do arquivo)
 **Branch da revisão:** `claude/pendencias-documento-86thrt`
 **Fonte:** documento *"MORTEM — Pendências de Revisão do Usuário"* (varredura de 19/07/2026),
 cruzado com o estado real do código nesta data.
@@ -298,3 +298,49 @@ Ajustada a constante ao texto real do jogo. **`qa-ui` agora: "UI VÁLIDA".**
 - **Sequência sugerida a seguir:** rodar o playtest → conforme o resultado, abrir a **OS de
   diálogo** (consumo das flags psíquicas, itens 2.1 + 2.3) *ou* corrigir solubilidade → deixar
   a **sessão de UI/arte** (1.2 b/c/e, 4.3) por último.
+
+---
+
+## Triagem do playtest cego de 27/07/2026
+
+Relatório versionado: [`docs/playtest/2026-07-27-playtest-cego.md`](./playtest/2026-07-27-playtest-cego.md).
+Partida completa até o epílogo, desfecho **Sucesso com Gafes**. Sete itens levantados;
+**cinco consertados nesta rodada**, por escolha do usuário.
+
+### O achado central: uma causa, três sintomas
+
+Os itens 1 e 3 do relatório eram **o mesmo defeito**, e maior do que o jogador pôde ver.
+As cartas que nascem dentro de um diálogo viviam só no texto transitório de um beat:
+escolher a pergunta seguinte substituía o nó e **destruía a carta em silêncio**, sem
+segunda chance e sem aviso. A carta e o botão que a apagava dividiam a mesma tela.
+
+São **13 das 50 cartas do caso** — todos os seis paradeiros declarados entre elas.
+Reproduzido no navegador antes de qualquer conserto: descer a árvore de Silas sem clicar
+nos termos deixava o Painel de Álibis vazio até o fim da partida.
+
+A cascata que isso produziu:
+
+| Sintoma relatado | Origem |
+|---|---|
+| Item 1 — o Painel de Álibis nunca registrou | nenhuma carta de álibi chegou à mesa; o painel estava correto |
+| Item 1 — o monólogo cobrou juízo «sem paradeiro colhido» | `veredicto.js` lê a mesma mesa vazia |
+| Item 3 — o «Inocente» não correspondeu ao que as cartas provam | `inocente_segredo` exige refutar o álibi pelo vestígio que revela o segredo; **sem a carta de álibi na mesa essa ligação é impossível de construir** — o jogador foi cobrado por um juízo que o defeito tornara infazível |
+
+### O que se fez
+
+| # | Item | Estado |
+|---|---|---|
+| 1 | Painel de Álibis nunca registrou | ✅ **O termo da conversa**: o que o interrogado já declarou fica escrito acima da fala corrente, com a pergunta que o perito fez, e os termos por colher continuam clicáveis. A conversa **continua a descer e a não voltar** — a escolha segue definitiva; o que deixa de acontecer é o dito se desdizer. Rodapé de aviso quando há coisa dita e não anotada |
+| 2 | Confronto antes da declaração gera contradição | ✅ **A trava passou do depois para o antes**: a pergunta de confronto que desmentiria um paradeiro ainda não declarado vem **travada e legível** (a razão vai escrita no próprio botão), em vez de avisar que nada se anotaria e rodar a confissão assim mesmo. Colhido o paradeiro, a trava cai |
+| 3 | Feedback dos juízos é opaco | ✅ **A lição do mestre** na Estação V, em voz de Abbot (tutorial só, como em `FalaDoLegista.jsx`): diz o que funda um juízo, sem entregar nada do caso — não reabre a porta que a Q3 fechou, que era o *gabarito*, não o critério. E o painel do «Inocente» sem paradeiro na mesa passa a nomear o que falta e onde se colhe, em vez de listar cartas e engolir o clique |
+| 4 | «Voltar o corpo» sem efeito visível | ✅ **Parcial, e o relatório errou num ponto**: o botão *já* marcava «· feito» (verificado). O que procedia era o resto — a cena dizia que o guarda esperava a ordem muito depois de o corpo ter sido voltado, e a prancha não virava. Os dois estados da cena passam a alternar-se pela carta do livor (campo novo `semCartas`), e o gesto **vira a prancha para a Fig. 2** |
+| 5 | A Cela cobra 1h estando no Posto | ✅ **Grupo `posto`**: a cela dos fundos e a sala da frente passam a ser o mesmo prédio, pelo precedente que a saleta de Silas já abrira na relojoaria — nó próprio, custo 0 entre os dois. Atravessar um corredor deixa de custar o mesmo que atravessar a vila |
+| 6 | O relógio nunca apertou | ⏭️ **Decisão do usuário, não defeito**: o prazo do inquérito é ficção declarada em `abertura.js` («nenhuma regra o lê, nenhum desfecho muda por ele»). O jogador leu certo. Calibrar a pressão do relógio é mudança de design, e fica para ordem expressa |
+| 7 | Fio solto: o esconderijo da torre | ⏭️ **Não triado nesta rodada** — precisa de decisão de design (é gancho deliberado ou promessa por pagar?) |
+
+### Guardas e verificação
+
+Nenhum contrato do `qa-ui.mjs` precisou mudar: a rota canônica colhe o álibi antes de
+confrontar, e por isso a trava do item 2 não a alcança. `data-no-dialogo` continua a
+marcar **só** a fala corrente (o registro usa `data-fala-registrada`), para os seletores
+do QA seguirem casando um nó por vez.

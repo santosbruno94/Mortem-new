@@ -49,9 +49,27 @@ export const LOCALIDADES = [
         ],
         prosa: [
           'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O guarda Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
-          'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O homem de guarda espera a ordem para voltar o corpo.',
+          'Ao primeiro exame do tronco e dos membros, [[ev_rigor]].',
           'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
           'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
+        ],
+        // O ESTADO DO EXAME (playtest cego de 27/07/2026, item 4). A frase do
+        // guarda à espera da ordem ficava na prosa base e continuava em tela
+        // depois de o corpo ter sido voltado — a cena não reconhecia o gesto
+        // que o jogador acabara de fazer. Os dois estados passam a alternar-se
+        // pela única coisa que os distingue: a carta do livor na mesa. Fica ao
+        // pé da prosa, encostada ao botão que executa o gesto.
+        prosaCondicional: [
+          {
+            semCartas: ['ev_livores'],
+            paragrafos: ['O homem de guarda espera a ordem para voltar o corpo.'],
+          },
+          {
+            requerCartas: ['ev_livores'],
+            paragrafos: [
+              'Voltado o corpo e tornado a pousar como estava, o homem de guarda recua para junto da porta. O pó do assoalho ficou revolvido no vão que os ombros ocupavam.',
+            ],
+          },
         ],
       },
       {

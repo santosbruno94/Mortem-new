@@ -30,25 +30,37 @@ export const GRUPOS = {
   // entre eles não custa tempo.
   relojoaria: 'A relojoaria — a loja inteira e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho, torre',
+  vila: 'A vila de Briarstone — estalagem, loja, moinho, torre',
+  // O posto do guarda é um prédio só, como a relojoaria: a sala da frente e a
+  // cela dos fundos partilham o mesmo telhado, e atravessar o corredor de uma
+  // à outra não é deslocamento pela vila (playtest cego de 27/07/2026, item 5).
+  posto: 'O posto do guarda — a sala da frente e a cela dos fundos (mesmo prédio)',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone (Moorford)',
 };
 
 // Custo de viagem em HORAS entre grupos (simétrico).
 //   - Dentro da relojoaria: 0h (é o mesmo prédio).
+//   - Dentro do posto: 0h (idem — a cela é o anexo dos fundos).
 //   - Dentro da vila: 1h (prédios diferentes na mesma vila).
-//   - Relojoaria <-> vila: 1h.
+//   - Relojoaria/posto <-> vila e entre si: 1h.
 //   - Qualquer coisa <-> fora (Moorford): 1,5h por trecho (3h ida e volta).
 export const CUSTO_ENTRE_GRUPOS = {
   'relojoaria|relojoaria': 0,
+  'posto|posto': 0,
   'vila|vila': 1,
   'relojoaria|vila': 1,
   'vila|relojoaria': 1,
+  'posto|vila': 1,
+  'vila|posto': 1,
+  'relojoaria|posto': 1,
+  'posto|relojoaria': 1,
   'relojoaria|fora': 1.5,
   'fora|relojoaria': 1.5,
   'vila|fora': 1.5,
   'fora|vila': 1.5,
+  'posto|fora': 1.5,
+  'fora|posto': 1.5,
   'fora|fora': 0,
 };
 
@@ -73,7 +85,7 @@ export const NOS_MAPA = [
   {
     id: 'posto_do_guarda', // OS-R2: o id alcança o que o jogador já lê (D11 revista)
     rotulo: 'O Posto do Guarda',
-    grupo: 'vila',
+    grupo: 'posto', // com a cela dos fundos: mesmo prédio, como a relojoaria
     desbloqueadoInicio: true,
   },
   {
@@ -109,9 +121,16 @@ export const NOS_MAPA = [
     // o avistamento do padeiro, porque é esse papel que manda o guarda prender
     // um homem da estrada. A dobradiça é o ato do inquérito, não uma dedução
     // do jogador — e é por isso que ela pode fechar um ato.
+    //
+    // Playtest cego de 27/07/2026 (item 5): a cela é "nos fundos do posto" e
+    // cobrava 1h para se alcançar de dentro do próprio posto — o mesmo que
+    // atravessar a vila até a estalagem. O custo do relógio é DESLOCAMENTO, e
+    // atravessar um corredor não é deslocamento. A cela passa ao grupo do
+    // posto, pelo precedente que a saleta de Silas já abrira na relojoaria:
+    // nó próprio, mesmo prédio, custo 0 entre os dois.
     id: 'cela',
     rotulo: 'A Cela do Posto',
-    grupo: 'vila',
+    grupo: 'posto',
     desbloqueadoInicio: false,
   },
   {
