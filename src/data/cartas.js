@@ -827,9 +827,16 @@ export const CARTAS = [
     },
   },
   {
-    // O VESTÍGIO FRESCO DA CELA (PD-09). Vestígio do RÉU, como a lasca de
-    // vidro: não casa com a arma do crime de sexta, e por isso não firma nexo
-    // sozinho. Ligado à Presença ao lado do buril, reforça sem gafe.
+    // O VESTÍGIO FRESCO DA CELA (PD-09).
+    //
+    // SEM `pertenceA`, e a ausência é a decisão. A lasca de vidro na bainha
+    // traz dono porque desmente um paradeiro DA MESMA NOITE; esta cera é de
+    // domingo, e o paradeiro que o réu declarou é o de sexta. Com dono, o
+    // motor a aceitaria como refutação daquele álibi — a régua é de presença,
+    // não de hora —, e o desfecho narraria um paradeiro derrubado pela noite
+    // errada. Sem dono, ela não refuta ninguém e não pode virar gafe de nexo:
+    // fica sendo o que é, uma cera que na cela não tem de onde vir, e a
+    // ligação com os cabos do estojo é leitura do jogador, como deve ser.
     id: 'ev_cera_tarimba',
     localidade: 'cela',
     textoDisplay: 'Cera Parda na Tábua da Tarimba',
@@ -840,7 +847,6 @@ export const CARTAS = [
       dominio: 'vestigio',
       subDominio: 'fragmento',
       tipoVestigio: 'cera_de_bancada',
-      pertenceA: 'silas_crane',
     },
   },
 
