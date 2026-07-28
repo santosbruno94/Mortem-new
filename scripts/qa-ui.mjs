@@ -422,7 +422,7 @@ async function main() {
     // completa; arquivar devolve a carta à mesa; a carta da mesa reabre a
     // mesma ficha; e a Caderneta, rebaixada a diário, não traz mais a descrição.
     const DESC_RIGOR = 'não cedem quando se tenta dobrá-los'; // trecho da descrição de ev_rigor
-    const CARIMBO_RIGOR = 'Rígido por inteiro; extremidades começando a ceder'; // carimboPadrao de ev_rigor no estado "Corpo Endurecido" (ipmAte 24)
+    const CARIMBO_RIGOR = 'Rígido por inteiro; dedos e mandíbula com leve folga à pressão firme'; // carimboPadrao de ev_rigor no estado "Corpo Endurecido" (ipmAte 24) — OS-S2 Frente B
     // OS-R2: o prédio é um nó só ("A Relojoaria") e abre no corpo — o
     // primeiro sub-local que a localidade declara.
     await abrirNo(page, 'A Relojoaria');
@@ -1190,6 +1190,7 @@ async function main() {
     const retrato = 'scripts/_falha-qa-ui.png';
     console.error(`\nFALHA DURA na ${rotaAtual}`);
     console.error(`Última checagem concluída: ${checar.ultima || '(nenhuma)'}`);
+    if (errosConsole.length) console.error('Erros de console até aqui:', errosConsole.slice(0, 8));
     try {
       await page.screenshot({ path: retrato, fullPage: true });
       console.error(`Retrato da tela no momento da falha: ${retrato}`);

@@ -58,7 +58,6 @@ export const LOCALIDADES = [
           // ponto»). As três regiões agora são as três que a carta reporta.
           'Ao primeiro exame do maxilar, do pescoço e dos membros, [[ev_rigor]].',
           'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
-          'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
         ],
         // O ESTADO DO EXAME (playtest cego de 27/07/2026, item 4). A frase do
         // guarda à espera da ordem ficava na prosa base e continuava em tela
@@ -67,6 +66,43 @@ export const LOCALIDADES = [
         // pela única coisa que os distingue: a carta do livor na mesa. Fica ao
         // pé da prosa, encostada ao botão que executa o gesto.
         prosaCondicional: [
+          // OS-S2 (Frente C-1): os outros dois gestos do corpo ganham o estado
+          // que o item 4 do playtest de 27/07 deu ao livor. O relógio «de tampa
+          // fechada, mudo» e o termômetro «à mão, se … julgar oportuno» ficavam
+          // falsos depois de dar corda e de medir. Cada frase da antiga
+          // prosa-base vira o lado `semCartas` do seu par; a ordem de
+          // declaração preserva a leitura original (relógio → termômetro →
+          // guarda/livor, encostados ao botão de cada gesto).
+          {
+            semCartas: ['ev_relogio_bolso'],
+            paragrafos: ['Na corrente do colete pende um relógio de bolso de tampa fechada, mudo.'],
+          },
+          {
+            requerCartas: ['ev_relogio_bolso'],
+            paragrafos: [
+              // Reescrita do editor-critico (A1/A3): a abertura anterior repetia
+              // verbatim a `descricao` de ev_relogio_bolso — que está em tela
+              // junto deste parágrafo — e «pende de tampa» lia-se torto.
+              'O relógio do morto pende da corrente do colete, a tampa erguida, o tique de novo em marcha. A leitura do mostrador está na caderneta, tomada antes da primeira volta de coroa.',
+            ],
+          },
+          {
+            semCartas: ['ev_algor'],
+            paragrafos: [
+              'A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
+            ],
+          },
+          {
+            // Sem citar leitura nem conclusão térmica: `ev_algor` tem duas
+            // variantes (morno/frio) e este parágrafo vale para as duas.
+            requerCartas: ['ev_algor'],
+            paragrafos: [
+              // Fecho em fato físico, como o bloco do livor (editor-critico, A2):
+              // «enxuto, de volta ao encaixe» já diz que se mediu; a súmula do
+              // gesto ecoava o fecho do parágrafo do relógio.
+              'A maleta de instrumentos segue aberta sobre a cadeira; o termômetro de mercúrio, enxuto, está de volta ao seu encaixe.',
+            ],
+          },
           {
             semCartas: ['ev_livores'],
             paragrafos: ['O homem de guarda espera a ordem para voltar o corpo.'],

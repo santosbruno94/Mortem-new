@@ -3485,3 +3485,90 @@ o buril às 21h.
   ainda se lê, ou se a Estação II satura.
 - **Medir se as três interferências se leem como AUTORIA** ou como acaso: a R3 manda que
   a autoria seja reconstruível de trás para frente, e isso só um humano diz.
+
+### 27/07/2026 — OS-S2: «O mundo que não responde»
+
+**Fonte:** `docs/os-s2-prompt-de-arranque.md` (prompt versionado escrito no fecho da
+triagem do playtest cego de 27/07). Três frentes; a C executável de arranque, a A e a B
+paradas à espera de decisão — **as quatro decisões saíram no arranque, todas pela
+recomendação.**
+
+#### Frente C — o mundo que não reconhece o gesto (executável, commit próprio)
+
+**C-1.** Os dois gestos do corpo que o item 4 do playtest deixou de fora ganharam o
+estado que o livor já tinha: a antiga frase da prosa-base («relógio de bolso de tampa
+fechada, mudo» / «o termômetro fica à mão, se … julgar oportuno») desmembrou-se em
+pares `semCartas`/`requerCartas` sobre `ev_relogio_bolso` e `ev_algor`, na mesma ordem
+de leitura. O parágrafo do termômetro não cita leitura nem conclusão térmica — a carta
+tem duas variantes (morno/frio) e ele vale para as duas. Prosa nova pelo
+`redigir-prosa`; o pipeline apanhou e corrigiu dois altos (a abertura repetia verbatim a
+`descricao` da carta co-visível; o eco de fecho «tomada»/«tomada» entre parágrafos
+contíguos).
+
+**C-2.** `tipoCenaDe` caía no default `gabinete` para a cela — estante de livros-razão
+contra o cubículo de porta gradeada. O grupo `posto` (conserto do item 5) resolve o
+prédio inteiro numa linha: `if (grupo === 'posto') return 'delegacia';`. Apresentação
+pura.
+
+#### Frente A — as interferências que não se leem (decisão do usuário: a recomendação)
+
+O diagnóstico veio fechado da triagem (o mecanismo funciona; o anúncio morria no fim do
+Diário; o `comoSoube` nunca chegava ao jogador; o eco só caía pós-partida). Decidido:
+
+- **Momento e forma:** o sinal entra na **chegada seguinte** à mesa — o bloco «Correu
+  palavra na vila», pousado na beira baixa do tampo, com o `anuncio` (que já existia e
+  permanece no Diário) e o carimbo de dia e hora. Um «ciente» o arquiva; cada disparo
+  aparece uma vez.
+- **Dosagem:** a linha `comoSoube` **entra junto**, em itálico — é a ponte causal que
+  transforma «que estranho, o vão vazio» em «eu mostrei o papel e ele correu». Nenhum
+  texto nomeia ator nem conclui autoria (R3 conferida pelo perito; o único nome citado,
+  a Sra. Rooke, é a dona do correio como canal, não o ator).
+- **O eco antecipado ficou de fora** por decisão — dosagem menor.
+- **Implementação:** `NoticiaVila.jsx` (apresentação pura) + campo de UI
+  `noticiasLidas` (motor cego). O `comoSoube` do banco gerado é nota de reconstituição
+  com ids internos `gen_` e **não sobe à mesa** (filtro `comoSoubeLegivel`); os 17
+  `anuncio` gerados são prosa limpa e sobem.
+- **Defeito revelado de caminho:** a primeira forma do aviso (faixa em fluxo acima da
+  mesa) encolhia o contêiner da prancha e punha o solucionador de etiquetas em
+  oscilação infinita («Maximum update depth» no `PranchaVila`) — apanhado pelo
+  `qa-ui.mjs`, que ganhou de brinde a impressão dos erros de console na falha dura. O
+  aviso pousou absoluto: nenhum contêiner muda de tamanho.
+
+#### Frente B — o carimbo que mentia ao metódico + as derivas da KB (decisão do usuário)
+
+- **O carimbo de `ev_rigor`** (estado «Corpo Endurecido», IPM real 16 h) deixou de
+  casar com a formulação que o verbete mapeia a 24–36 h: «Rígido por inteiro; dedos e
+  mandíbula com leve folga à pressão firme» — a língua da própria `descricao`
+  (cessão forçada sob manipulação ≠ resolução espontânea; parecer do perito). Verbete
+  intocado; espelho `CARIMBO_RIGOR` do `qa-ui.mjs` atualizado no mesmo commit. Resíduo
+  registrado pelo perito (menor, sem ordem de conserto): a mandíbula segue palavra
+  partilhada entre o carimbo do pleno e o verbete da resolução.
+- **As duas derivas da KB emendadas** (`tanatologia.md`, emenda datada): o exemplo de
+  algor realinhado ao seed (morte 21 h, IPM 16 h, corpo a 21 °C) e o teto durável de
+  23 h reatribuído à **rotina interrompida** — o motor nunca deu teto ao livor fixo
+  (`janelaLivor` = `[12h, ∞)`); o livor fica como teto largo. De caminho, o fiscal e o
+  perito apanharam, independentes, a mesma terceira deriva dentro do §4: o piso de 20 h
+  glosado como «ceia servida», quando `dep_visto_vivo` é o guarda Tobin a ver a vitrine
+  fechar. Corrigido na mesma emenda.
+
+#### Pipeline e gate
+
+Duas rodadas do `revisar-prosa` (uma por commit), revisores em primeiro plano, **zero
+bloqueantes remanescentes**; achados altos corrigidos no ato (repetição de camada, eco
+de fecho, a «ceia» do §4, e o carimbo do rigor refeito em frase nominal — a primeira
+redação repetia verbatim a `descricao` co-visível na Ficha) e menores acatados quando
+baratos (`formatHoraComDia` no carimbo do aviso — o inquérito cruza a meia-noite; a
+maiúscula do `comoSoube` posta na renderização, sem tocar a prosa da OS-S1). `npm run verificar` verde nos dois
+commits: build limpo, `qa.mjs` CASO VÁLIDO, `lint:prosa` zero, `qa-ui.mjs` UI VÁLIDA.
+Contrato do `qa-ui`: só a string espelhada `CARIMBO_RIGOR` mudou, no mesmo commit da
+carta.
+
+### Aberto para a rodada seguinte
+
+- **Playtest do mural a 51 cartas** (gate do usuário — desbloqueado desde 27/07): medir
+  se a Estação II satura, e agora também **se o aviso da vila se lê como autoria** — a
+  pergunta da R3, enfim testável com o sinal em cena.
+- **Os anéis do Ato I e do Ato II** e a OS «Reação Vital Condicionante» — intactos,
+  pelas razões registradas na OS-S1.
+- **O relógio que nunca aperta** (item 6): esperar o playtest a 51 cartas, por decisão
+  registrada no prompt da OS-S2.

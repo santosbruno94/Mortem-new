@@ -33,6 +33,11 @@ export function tipoCenaDe(localidadeId = '', grupo = '') {
   if (id.includes('delegacia') || id.includes('posto') || id.includes('wycliffe')) return 'delegacia';
   if (id.includes('estalagem') || id.includes('walter')) return 'estalagem';
   if (id.includes('moinho') || id.includes('grey') || id.includes('moleiro')) return 'moinho';
+  // OS-S2 (Frente C-2): a cela caía no default 'gabinete' — estante de
+  // livros-razão contra a prosa do cubículo de porta gradeada. O grupo
+  // `posto` (criado no conserto do item 5 do playtest de 27/07) resolve o
+  // prédio inteiro: qualquer cômodo dele desenha-se como o posto.
+  if (grupo === 'posto') return 'delegacia';
   if (grupo === 'relojoaria') return 'oficina';
   return 'gabinete';
 }

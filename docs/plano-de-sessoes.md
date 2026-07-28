@@ -56,19 +56,39 @@ A ordem parte da sequência registrada em `pendencias-status.md` ("rodar o playt
 diálogo *ou* solubilidade → UI/arte por último") e das observações de triagem do relatório
 de playtest (itens que se cruzam decidem-se juntos).
 
-### PRÓXIMA — OS-S2, «O mundo que não responde» *(escrita e engatilhada)*
+### ✅ OS-S2, «O mundo que não responde» *(aberta e fechada em 27/07/2026)*
 
-- **Prompt de arranque pronto:** [`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md).
-  Copiar o §1 como primeira mensagem da sessão nova.
-- **Frente A — as interferências que não se leem.** A quarta pendência da OS-S1, hoje
-  respondida: o mecanismo funciona inteiro e o jogador não o lê. Diagnóstico fechado, três
-  causas localizadas no código. **Para e propõe antes de construir** — mexe na dosagem que
-  a OS-S1 martelou.
-- **Frente B — o carimbo de `ev_rigor` que mente ao metódico**, mais duas derivas da KB.
-  **Decisão do usuário** por regra do `CLAUDE.md` (divergência KB × motor).
-- **Frente C — o mundo que não reconhece o gesto:** os dois gestos do corpo que sobraram
-  (relógio e termômetro) e a cela que se desenha como gabinete. **Executável de arranque**,
-  já tem ordem.
+- **Prompt de arranque:** [`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md).
+  As três frentes executadas; as duas que paravam e perguntavam receberam decisão do
+  usuário no arranque, todas pela recomendação. Ata em `historico-decisoes.md`.
+- **✅ Frente A — as interferências que não se leem (27/07/2026, decisão do usuário
+  pela recomendação).** A OS parou, propôs com o texto exato e o usuário decidiu: o sinal
+  entra na **chegada seguinte** à mesa, como o bloco «Correu palavra na vila» — o
+  `anuncio` que já existia + a linha `comoSoube` em itálico (a ponte causal que nunca
+  chegava ao jogador), com carimbo de dia e hora e um «ciente» que o arquiva (o Diário
+  segue com o registro, como antes). Nenhum texto nomeia ninguém — a disciplina da OS-S1
+  fica. Componente `NoticiaVila` (apresentação pura, campo `noticiasLidas` de UI; motor
+  cego, guarda de sempre). O `comoSoube` do banco gerado é nota interna com ids `gen_` e
+  **não sobe à mesa** (filtro); os 31 casos mostram só o anúncio. O eco antecipado ficou
+  de fora por decisão (dosagem menor).
+- **✅ Frente B — o carimbo que mentia ao metódico + as derivas da KB (27/07/2026,
+  decisão do usuário).** O `carimboPadrao` de `ev_rigor` deixou de casar com a
+  formulação que o verbete mapeia a 24–36 h: «Rígido por inteiro; dedos e mandíbula
+  com leve folga à pressão firme» (frase nominal, sem o verbo «ceder» e sem repetir a
+  `descricao` co-visível na Ficha; verbete intocado; espelho do `qa-ui.mjs` atualizado
+  no mesmo commit). Na KB
+  (`tanatologia.md`), emenda datada: o exemplo de algor realinhado ao seed (21 h, IPM
+  16 h) e o teto durável de 23 h reatribuído à **rotina interrompida** (o livor fixo fica
+  como teto largo) — e o piso corrigido de «ceia» para a vitrine fechada vista por Tobin
+  (achado do fiscal na própria emenda).
+- **✅ Frente C — o mundo que não reconhece o gesto (27/07/2026).** C-1: os dois gestos
+  que sobravam ganharam estado pelo mesmo campo do livor — o relógio deixa de estar «de
+  tampa fechada, mudo» depois da corda, o termômetro deixa de «ficar à mão» depois da
+  medição (pares `semCartas`/`requerCartas` no sub-local `corpo`; prosa nova pelo
+  `redigir-prosa`). C-2: a cela deixou de se desenhar como gabinete — `tipoCenaDe` resolve
+  o grupo `posto` para a cena do posto (uma linha, apresentação pura). Pipeline
+  `revisar-prosa` em primeiro plano, zero bloqueantes (dois altos do editor corrigidos:
+  repetição de camada com a carta e eco de fecho); `npm run verificar` verde.
 - **Fora da OS, por decisão registrada:** os anéis do Ato I/II (custo alto, sem evidência
   de necessidade), o relógio do inquérito (esperar o playtest a 51 cartas) e a OS «Reação
   Vital Condicionante».
