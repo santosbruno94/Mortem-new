@@ -199,7 +199,11 @@ prancha passa à **Fig. 2** sozinha — só na transição, só com o **exame ex
 (com a necropsia aberta a viragem correria invisível), e virar a folha de volta continua
 sendo do jogador. A cena acompanha: os dois estados («o homem de guarda espera a ordem» ×
 «voltado o corpo e tornado a pousar como estava») alternam-se pelo campo
-**`semCartas`** — espelho de `requerCartas`, lido em `EventoLocalidade.jsx`. Diálogos e localidades compõem **A Cena** ilustrada
+**`semCartas`** — espelho de `requerCartas`, lido em `EventoLocalidade.jsx`. Desde a
+OS-S2 (27/07/2026) os três gestos do corpo têm estado: o relógio de bolso deixa de
+pender «de tampa fechada, mudo» depois da corda, e o termômetro deixa de «ficar à mão»
+depois de a temperatura ter sido tomada — o mundo reconhece o que o perito acabou de
+fazer. Diálogos e localidades compõem **A Cena** ilustrada
 (`CenaDialogo.jsx`/`FundoCena.jsx`: fundo 2D paramétrico por localidade + sprite meio-corpo
 do genótipo de aparência, com "gravura que respira" e reação observável). Tudo procedural —
 o placeholder É o fallback (slots `prancha_corpo`/`fundo_cena` prontos para arte externa
@@ -1454,6 +1458,17 @@ dois sulcos e três dedadas de cera); **R2** saldo ≥ 0 — nada do que se dest
 ninguém**; **R4** quem chega primeiro não perde a peça. A cela é **auto de exame**, não
 segundo mural: o veredicto sobre aquela morte é do segundo inquérito do coroner, fora
 de cena (D12).
+
+**O sinal do disparo (OS-S2, Frente A, 27/07/2026).** O playtest cego provou que o
+mecanismo funcionava inteiro e o jogador não o lia: o anúncio era uma linha no fim do
+Diário, e a ponte causal não chegava a ele. Na **chegada seguinte à mesa**, o bloco
+**«Correu palavra na vila»** (`NoticiaVila.jsx`) mostra, uma vez por evento, o anúncio
+e a linha `comoSoube` — como a notícia pôde andar («o papel pousado na saleta diz ao
+interrogado exatamente até onde a perícia já chegou») —, com dia e hora; o «ciente»
+arquiva e resta o Diário. A disciplina fica: nenhum texto nomeia o **autor** — a
+autoria continua leitura do jogador, agora com a ponte à vista. Camada de UI pura
+(campo `noticiasLidas`); o motor não lê. No banco gerado, o `comoSoube` é nota interna
+com ids e não sobe à mesa; os anúncios sobem.
 
 ---
 

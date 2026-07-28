@@ -138,10 +138,18 @@ voltar o corpo **vira a prancha** e é reconhecido pela cena, a cela deixa de co
 corredor, e a Estação V ganhou uma **voz do mestre** que diz o que funda um juízo sem
 entregar nada do caso.
 
+A **OS-S2 («O mundo que não responde», 27/07/2026)** fechou as três frentes que a triagem
+deixou: a vila passou a **dar notícia** do que se move — na chegada seguinte a um disparo de
+interferência, o bloco «Correu palavra na vila» traz o anúncio e a ponte causal que antes
+não chegavam ao jogador, sem nomear o autor —; os três gestos do corpo ganharam **estado**
+(o relógio deixa de estar mudo depois da corda, o termômetro volta ao encaixe depois da
+medição, e a cela se desenha como cela); e o **carimbo do rigor deixou de mentir ao
+metódico** — a formulação antiga casava com a faixa errada do glossário, e a KB de
+tanatologia foi emendada em três derivas, por decisão do usuário.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
-o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md), e a
-frente seguinte já está escrita e medida em
-[`docs/os-s2-prompt-de-arranque.md`](./docs/os-s2-prompt-de-arranque.md).
+o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md). O
+próximo gate é do usuário: o **playtest do mural a 51 cartas**, desbloqueado desde 27/07.
 
 ## Documentação
 
@@ -153,7 +161,7 @@ frente seguinte já está escrita e medida em
 | [`docs/sistema-visual.md`](./docs/sistema-visual.md) | Sistema visual da interface: paleta token a token, cardápio tipográfico, catálogo da matéria, legenda das tintas de carimbo e as divergências deliberadas do desenho |
 | [`docs/pendencias-status.md`](./docs/pendencias-status.md) | Mapa vivo do que ainda falta (o que foi feito, o que fica para sessão própria) |
 | [`docs/plano-de-sessoes.md`](./docs/plano-de-sessoes.md) | Rota de trabalho entre sessões: ordem, escopo e critério de pronto de cada frente |
-| [`docs/os-s2-prompt-de-arranque.md`](./docs/os-s2-prompt-de-arranque.md) | Prompt de arranque da frente seguinte (**OS-S2 — O mundo que não responde**), já medida e engatilhada |
+| [`docs/os-s2-prompt-de-arranque.md`](./docs/os-s2-prompt-de-arranque.md) | Prompt de arranque da **OS-S2 — O mundo que não responde** (**executada em 27/07/2026**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/playtest/`](./docs/playtest/) | Relatórios de playtest versionados verbatim, com índice — só consulta, não normativos |
 | [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md) | Plano contra a genericidade espacial dos casos procedurais (etapas E1-E6; prompts de implementação em [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md)) |
 | [`docs/os-prosa-viva-e0-plano.md`](./docs/os-prosa-viva-e0-plano.md) | Plano contra a genericidade **textual** dos casos procedurais — sequência da Vila Viva (Fase 0 de telemetria + etapas E1-E5; prompts de implementação em [`docs/os-prosa-viva-prompts-implementacao.md`](./docs/os-prosa-viva-prompts-implementacao.md)) |
